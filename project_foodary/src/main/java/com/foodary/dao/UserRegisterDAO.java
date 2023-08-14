@@ -12,6 +12,9 @@ public interface UserRegisterDAO {
 
 //	UserRegisterService에서 넘어온 idx를 처리하는 dao 메소드	
 	UserRegisterVO selectByIdx(int idx);
+
+//	아이디 중복검사	
+	int idCheck(String id);
 	
 //	회원 정보 한 건을 저장하는 메소드
 	UserRegisterVO selectByInfo(HashMap<String, String> hmap);
@@ -28,7 +31,6 @@ public interface UserRegisterDAO {
 //	비밀번호 변경하는 메소드
 	void newpasswordUpdate(HashMap<String, String> hmap);
 
-	int idCheck(String id);
 
 
 

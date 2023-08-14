@@ -4,42 +4,41 @@ function idCheckFunction() {
 	
 	$.ajax({
 		type: 'POST',
-		url: './idCheck',
+		url: '../idCheck',
 		data: {
 			id: id
 		},
 		success: function (res) {
+			console.log(res);
+			
 			switch (res) {
-				case '1':
+				case '2':
 					$('#messageType').html('에러 메시지');
 					$('#messageContent').html('아이디를 입력하고 중복 체크 버튼을 누르세요.');
 					$('#errorMessage').html('아이디를 입력하고 중복 체크 버튼을 누르세요.');
 					$('#messageCheck').attr('class', 'modal-content panel-warning');
 					$('#id').val('');
 					break;
-				case '2':
+				case '1':
 					$('#messageType').html('에러 메시지');
 					$('#messageContent').html('사용중인 아이디 입니다.');
 					$('#errorMessage').html('사용중인 아이디 입니다.');
 					$('#messageCheck').attr('class', 'modal-content panel-warning');
 					$('#id').val('');
 					break;
-				case '3':
+				case '0':
 					$('#messageType').html('성공 메시지');
 					$('#messageContent').html('사용 가능한 아이디입니다.');
 					$('#errorMessage').html('사용 가능한 아이디입니다.');
 					$('#register').attr('disabled', false);
 					$('#messageCheck').attr('class', 'modal-content panel-success');
 					break;
-			
 			}
 			// 회원 저장 모달 창을 띄운다.
 			$('#messageModal').modal('show');
-		
 		},
 		error: e => console.log('요청 실패: ' + e.status)
 	});
-	
 }
 
 function userRegister() {
@@ -61,7 +60,7 @@ function userRegister() {
 //	jQuery ajax
 	$.ajax({
 		type: 'POST', 
-		url: './UserRegister', 
+		url: '../UserRegister', 
 		data: {
 			username: username,
 			id: id,
@@ -128,7 +127,7 @@ function userRegisterInfo() {
 	var form = $("#registerform").serialize();
 	$.ajax({
 		type: 'POST', 
-		url: './UserRegister', 
+		url: '../UserRegister', 
 		data: form, 
 		
 		// ajax 요청이 성공하면 실행할 콜백 함수
@@ -317,10 +316,27 @@ function Noregister() {
 }
 
 
-
-
-
-
+function PasswordUpdate() {
+    var password = $("#newpassword").val();
+    if (password === '') {
+        alert('비밀번호를 입력하세요.');
+        $('#newpassword').focus();
+    } else {
+        var checkNumber = password.search(/[0-9]/g);
+        var checkEnglish = password.search(/[a-z]/ig);
+        if (!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/.test(password)) {
+            alert('영문자, 숫자 및 특수문자 조합으로 8자리 이상 사용해야 합니다.');
+            $('#newpassword').val('');
+            $('#newpasswordcheck').val('');
+            $('#newpassword').focus();
+        } else if (checkNumber < 0 || checkEnglish < 0) {
+            alert("숫자와 영문자를 혼용하여야 합니다.");
+            $('#newpassword').val('');
+            $('#newpasswordcheck').val('');
+            $('#newpassword').focus();
+        }
+    }
+}
 
 
 

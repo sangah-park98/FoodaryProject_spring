@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.foodary.project_foodary">
+	<logger name="com.foodary.foodary">
 		<level value="info" />
 	</logger>
 	
