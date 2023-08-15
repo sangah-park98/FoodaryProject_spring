@@ -1,6 +1,8 @@
 package com.foodary.foodary;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -101,6 +103,34 @@ public class UserController {
     	return "main/foodaryMainPageBefore";
     }
     
+    @RequestMapping("/register/findId")
+    public String findId(HttpServletRequest request, Model model, String username) {
+    	logger.info("findId() 실행");
+    	return "register/findId";
+    }
+    
+    @RequestMapping("/register/findIdOK")
+    public String findIdOK(HttpServletRequest request, Model model) {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        
+        UserRegisterDAO mapper = sqlSession.getMapper(UserRegisterDAO.class);
+        HashMap<String, String> hmap = new HashMap<String, String>();
+        hmap.put("username", username);
+        hmap.put("email", email);
+        
+        List<UserRegisterVO> userRegisterVO = mapper.findId(hmap);
+        
+        List<String> idList = new ArrayList<String>();
+        for (UserRegisterVO user : userRegisterVO) {
+            idList.add(user.getId());
+        }
+        logger.info("{}", idList);
+        model.addAttribute("idList", idList);
+        return "register/findIdAfter";
+    }
+
+
     @RequestMapping("/register/myPageInfoUpdate")
     public String myPageInfoUpdate(HttpServletRequest request, Model model, String username, String id, String email, int idx) {
     	logger.info("myPageInfoUpdate() 실행");

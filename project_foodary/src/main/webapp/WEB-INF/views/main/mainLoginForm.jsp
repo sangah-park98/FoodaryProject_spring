@@ -24,11 +24,19 @@
 	       <tr>
 	          <td style="text-align: center; padding-right: 45px; padding-top: 10px;">
 	        	 <button type="button" onclick="location.href='${pageContext.request.contextPath}/register/register'" style="background: none; border: 0;">
-	        	 	<span style="background: lavender; color:black; font-size: 25pt;">회원가입</span>
+	        	 	<span style="background: lavender; color:black; font-size: 25pt; cursor: pointer;">회원가입</span>
 	        	 </button>
 	             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	             <button type="submit" style="background: none; border: 0;">
-	             	<span style="background: lavender; color:black; font-size: 25pt;">로그인</span>
+	             	<span style="background: lavender; color:black; font-size: 25pt; cursor: pointer;">로그인</span>
+	             </button><br/>
+	             <button type="button" onclick="location.href='${pageContext.request.contextPath}/register/findId'" style="background: none; border: 0;">
+	             &nbsp;&nbsp;&nbsp;&nbsp;
+	             	<span style="background: lavender; color:black; font-size: 15pt; cursor: pointer;">아이디 찾기</span>
+	             </button>
+	             <button type="submit" style="background: none; border: 0;">
+	             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	             	<span style="background: lavender; color:black; font-size: 15pt; cursor: pointer;">비밀번호 찾기</span>
 	             </button>
 	          </td>
 	       </tr>

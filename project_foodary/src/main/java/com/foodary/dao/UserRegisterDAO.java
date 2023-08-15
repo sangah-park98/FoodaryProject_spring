@@ -1,6 +1,7 @@
 package com.foodary.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.foodary.vo.UserRegisterVO;
 
@@ -30,6 +31,10 @@ public interface UserRegisterDAO {
 	
 //	비밀번호 변경하는 메소드
 	void newpasswordUpdate(HashMap<String, String> hmap);
+
+//	아이디 찾기 메소드	
+	List<UserRegisterVO> findId(HashMap<String, String> hmap);
+
 
 
 

@@ -43,6 +43,11 @@
 		update userregister set password = #{newpassword} where id = #{id}
 	</update>
 	
+	<!-- 아이디 1건을 얻어온다. -->
+	<select id="findId" parameterType="java.util.HashMap" resultType="com.foodary.vo.UserRegisterVO">
+		select id from userregister where username = #{username} and email = #{email}
+	</select>
+	
 </mapper>
 
 

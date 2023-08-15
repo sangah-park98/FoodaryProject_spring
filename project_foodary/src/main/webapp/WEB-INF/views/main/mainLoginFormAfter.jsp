@@ -24,7 +24,7 @@
 			            <button type="submit">
 			            	<span style="background: lavender; color:black; font-size: 25pt;">MY페이지</span>
 			            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			            <button type="button" onclick="location.href='logoutOK?username=${rvo.username}'">
+			            <button type="button" onclick="location.href='register/logoutOK?username=${rvo.username}'">
 			            	<span style="background: lavender; color:black; font-size: 25pt;">로그아웃</span>
 			            </button>
 			          </td>
