@@ -50,7 +50,10 @@
                <th colspan="2">
                   <button id="dropInfo" type="submit" name="dropInfo" style="background: none; border: 0; cursor: pointer;">
                      <span style="background: #baffda; font-size: 35px;">탈퇴하기</span>
-                  </button>
+                  </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	              <button type="button" onclick="location.href='${pageContext.request.contextPath}/register/myPage'" style="background: none; border: 0; cursor: pointer;">
+	               	<span style="background: #baffda; font-size: 35px;">돌아가기</span>
+	              </button>
                </th>
             </tr>
          </table>
@@ -67,14 +70,8 @@
 $(document).ready(function(e){
     $('#dropInfo').click(function(e) {
         e.preventDefault();
-
-        if ($('#password').val() == '') {
+        if ($('#password').val() == '' || $('#passwordChk').val() == '') {
             alert("비밀번호를 입력하세요.");
-            $('#password').focus();
-            return;
-        } else if ($('#passwordChk').val() == '') {
-            alert("비밀번호를 입력하세요.");
-            $('#passwordChk').focus();
             return;
         } else if ($('#passwordChk').val() != $('#password').val()){
             alert("비밀번호가 일치하지 않습니다.");
@@ -82,17 +79,17 @@ $(document).ready(function(e){
             $('#passwordChk').val('');
             $('#password').focus();
             return;
-        } else if ($('#passwordChk').val() != ${rvo.password} && $('#password').val() != ${rvo.password}) {
-        	alert("비밀번호가 일치하지 않습니다.");
+        } else if ($('#passwordChk').val() != '${rvo.password}' && $('#password').val() != '${rvo.password}') {
+            alert("비밀번호가 일치하지 않습니다.");
             $('#password').val('');
             $('#passwordChk').val('');
             $('#password').focus();
             return;
         } else {
-	        var confirmation = confirm("Foodary에서 탈퇴하시겠습니까?");
-	        if (confirmation) {
-	            $('form').submit();
-	        }
+            var confirmation = confirm("Foodary에서 탈퇴하시겠습니까?");
+            if (confirmation) {
+                $('form').submit();
+            }
         }
     });
 });

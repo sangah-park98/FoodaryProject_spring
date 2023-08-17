@@ -23,6 +23,16 @@
 		select * from userregister where id = #{id} and password = #{password}
 	</select>
 	
+	<!-- 아이디 1건을 얻어온다. -->
+	<select id="findId" parameterType="java.util.HashMap" resultType="com.foodary.vo.UserRegisterVO">
+		select id from userregister where username = #{username} and email = #{email}
+	</select>
+	
+	<!-- 비밀번호 1건을 얻어온다. -->
+	<select id="findPassword" parameterType="String" resultType="com.foodary.vo.UserRegisterVO">
+		select password from userregister where username = #{username} and id = #{id}
+	</select>
+	
 	<!-- 키, 현재 체중, 목표 체중, 나이를 수정하는 메소드 -->
 	<update id="userUpdate" parameterType="java.util.HashMap">
       update userregister set height = #{height}, currentWeight = #{currentWeight}, goalWeight = #{goalWeight}, age = #{age}, state = #{state}, active = #{active} where id = #{id}   
@@ -43,10 +53,6 @@
 		update userregister set password = #{newpassword} where id = #{id}
 	</update>
 	
-	<!-- 아이디 1건을 얻어온다. -->
-	<select id="findId" parameterType="java.util.HashMap" resultType="com.foodary.vo.UserRegisterVO">
-		select id from userregister where username = #{username} and email = #{email}
-	</select>
 	
 </mapper>
 

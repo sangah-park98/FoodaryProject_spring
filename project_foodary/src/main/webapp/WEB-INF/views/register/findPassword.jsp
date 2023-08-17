@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script type="text/javascript" src="../js/jquery-3.7.0.js"></script>
@@ -16,12 +16,12 @@
       <jsp:include page="./headerAfter.jsp"></jsp:include>
    </div>
    <div style="text-align: center;" align="center">
-      <form action="findIdOK" method="post" enctype="multipart/form-data" onsubmit="return changeIdBefore()">
+      <form action="findPasswordOK" method="post" enctype="multipart/form-data" onsubmit="return changePasswordBefore()">
          <div>
-            <span style="background: #fafcd9; font-size: 30pt; font-weight: 900;">아이디 찾기</span><br/>
-            <span style="text-decoration: underline; background: lavender; font-size: 25pt; font-weight: 800;">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 아이디를 찾을 수 있습니다.</span><br/><br/>
+            <span style="background: #fafcd9; font-size: 30pt; font-weight: 900;">비밀번호 찾기</span><br/>
+            <span style="text-decoration: underline; background: lavender; font-size: 25pt; font-weight: 800;">이름과 아이디를 정확히 입력해주세요.</span><br/><br/>
             이름: <input id="username" name="username" type="text"/><br/><br/>
-            이메일: <input id="email" name="email" type="email" style="width: 300px;"/><br/><br/>
+            아이디: <input id="id" name="id" type="text" style="width: 300px;"/><br/><br/>
          </div>
          <br/><br/>
          <div>

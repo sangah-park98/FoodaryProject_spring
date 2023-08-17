@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.foodary.dao.UserRegisterDAO;
 import com.foodary.vo.UserRegisterVO;
@@ -39,7 +39,7 @@ public class UserController {
     	UserRegisterDAO mapper = sqlSession.getMapper(UserRegisterDAO.class);
     	mapper.insertregister(userRegisterVO);
     	model.addAttribute("msg", "회원가입에 성공했습니다.");
-    	return "redirect:/main/foodaryMainPageBefore";
+    	return "redirect:/";
     }
     
     @RequestMapping("/UserRegisterCheck")
@@ -76,10 +76,10 @@ public class UserController {
         UserRegisterDAO mapper = sqlSession.getMapper(UserRegisterDAO.class);
 
         if (id == null || id.isEmpty()) {
-            model.addAttribute("msg", "아이디를 입력해 주세요.");
+            model.addAttribute("msg", "아이디를 입력해주세요.");
             return "main/foodaryMainPageBefore";
         } else if (password == null || password.isEmpty()) {
-            model.addAttribute("msg", "비밀번호를 입력해 주세요.");
+            model.addAttribute("msg", "비밀번호를 입력해주세요.");
             return "main/foodaryMainPageBefore";
         }
         HashMap<String, String> hmap = new HashMap<String, String>();
@@ -120,7 +120,6 @@ public class UserController {
         hmap.put("email", email);
         
         List<UserRegisterVO> userRegisterVO = mapper.findId(hmap);
-        
         List<String> idList = new ArrayList<String>();
         for (UserRegisterVO user : userRegisterVO) {
             idList.add(user.getId());
@@ -130,7 +129,33 @@ public class UserController {
         return "register/findIdAfter";
     }
 
+    @RequestMapping("/register/findPassword")
+    public String findPassword(HttpServletRequest request, Model model, String username) {
+    	logger.info("findPassword() 실행");
+    	return "register/findPassword";
+    }
+    
+    @RequestMapping("/register/findPasswordOK")
+    public String findPasswordOK(HttpServletRequest request, Model model) {
+        logger.info("findPasswordOK() 실행");
+        UserRegisterDAO mapper = sqlSession.getMapper(UserRegisterDAO.class);
+        String username = request.getParameter("username");
+        String id = request.getParameter("id");
+        HashMap<String, String> hmap = new HashMap<String, String>();
+        hmap.put("username", username);
+        hmap.put("id", id);
+        UserRegisterVO userRegisterVO = mapper.findPassword(hmap);
 
+        if (userRegisterVO == null) {
+            model.addAttribute("msg", "아이디 또는 이름을 확인해주세요.");
+        } else {
+            model.addAttribute("password", userRegisterVO.getPassword());
+        }
+
+        logger.info("{}", userRegisterVO);
+        return "register/findPasswordAfter";
+    }
+    
     @RequestMapping("/register/myPageInfoUpdate")
     public String myPageInfoUpdate(HttpServletRequest request, Model model, String username, String id, String email, int idx) {
     	logger.info("myPageInfoUpdate() 실행");

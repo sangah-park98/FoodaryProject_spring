@@ -12,14 +12,13 @@
 <link rel="stylesheet" href="/foodary/css/fiveGrid.css"/>
 <script type="text/javascript" src="../js/jquery-3.7.0.js"></script>
 <script type="text/javascript" src="../js/mainFunction.js"></script>
-<script type="text/javascript">
-	var message = "${msg}";
-	if (message) {
-		alert(message);
-	}
-</script>
 </head>
 <body>
+ <c:if test="${not empty msg}">
+        <script>
+            alert("${msg}");
+        </script>
+    </c:if>
 <div class="container">
 <!-- header -->
 	<div class="header">
@@ -81,6 +80,7 @@
     	<jsp:include page="./footer.jsp"></jsp:include>
     </div>
 </div>
+
 </body>
 </html>
 

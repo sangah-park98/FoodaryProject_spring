@@ -35,8 +35,8 @@ public interface UserRegisterDAO {
 //	아이디 찾기 메소드	
 	List<UserRegisterVO> findId(HashMap<String, String> hmap);
 
-
-
+//	비밀번호 찾기 메소드
+	UserRegisterVO findPassword(HashMap<String, String> hmap);
 
 
 }

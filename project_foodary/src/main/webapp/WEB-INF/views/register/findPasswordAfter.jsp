@@ -3,18 +3,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script type="text/javascript" src="../js/jquery-3.7.0.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script defer type="text/javascript" src="../js/changeIdBefore.js"></script>
-<script type="text/javascript">
-	var message = "${msg}";
-	if (message) {
-		alert(message);
-	}
-</script>
 <link rel="stylesheet" href="../css/threeGrid.css"/>
 </head>
 <body>
@@ -26,19 +20,17 @@
    <div style="text-align: center;" align="center">
       <form>
       <c:choose>
-      <c:when test="${empty idList}">
+      <c:when test="${empty password}">
          <script type="text/javascript">
-            alert("일치하는 아이디가 없습니다.");
+            alert("아이디 또는 이름을 확인해주세요.");
             location.href = "${pageContext.request.contextPath}";
          </script>
       </c:when>
       <c:otherwise>
          <div>
-            <span style="background: #fafcd9; font-size: 30pt; font-weight: 900;">아이디 찾기</span><br/>
-            <span style="text-decoration: underline; background: lavender; font-size: 25pt; font-weight: 800;">고객님의 정보와 일치하는 아이디 목록입니다.</span><br/><br/>
-            <c:forEach items="${idList}" var="id">
-               아이디: ${id}<br/>
-            </c:forEach>
+            <span style="background: #fafcd9; font-size: 30pt; font-weight: 900;">비밀번호 찾기</span><br/>
+            <span style="text-decoration: underline; background: lavender; font-size: 25pt; font-weight: 800;">입력하신 정보와 일치하는 비밀번호 입니다.</span><br/><br/>
+               비밀번호: ${password}<br/>
          </div>
       </c:otherwise>
       </c:choose>
@@ -48,8 +40,8 @@
                <span style="background: #baffda; font-size: 35px;">로그인하기</span>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" onclick="location.href='${pageContext.request.contextPath}/register/findPassword'" style="background: none; border: 0; cursor: pointer;">
-               <span style="background: #baffda; font-size: 35px;">비밀번호 찾기</span>
+            <button type="button" onclick="location.href='${pageContext.request.contextPath}'" style="background: none; border: 0; cursor: pointer;">
+               <span style="background: #baffda; font-size: 35px;">돌아가기</span>
             </button>
          </div>
       </form>

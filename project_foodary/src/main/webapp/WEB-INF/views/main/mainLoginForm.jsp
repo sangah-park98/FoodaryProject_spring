@@ -34,7 +34,7 @@
 	             &nbsp;&nbsp;&nbsp;&nbsp;
 	             	<span style="background: lavender; color:black; font-size: 15pt; cursor: pointer;">아이디 찾기</span>
 	             </button>
-	             <button type="submit" style="background: none; border: 0;">
+	             <button type="button" onclick="location.href='${pageContext.request.contextPath}/register/findPassword'" style="background: none; border: 0;">
 	             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	             	<span style="background: lavender; color:black; font-size: 15pt; cursor: pointer;">비밀번호 찾기</span>
 	             </button>
