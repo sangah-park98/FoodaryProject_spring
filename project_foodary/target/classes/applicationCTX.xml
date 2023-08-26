@@ -11,8 +11,12 @@
 	<bean id="freeboardCommentVO" class="com.foodary.vo.FreeboardCommentVO"/>
 	<bean id="freeboardCommentList" class="com.foodary.vo.FreeboardCommentList"/>
 	
-	
-	
+	<bean id="dietVO" class="com.foodary.vo.DietVO"/>
+	<bean id="dietList" class="com.foodary.vo.DietList"/>
+	<bean id="foodVO" class="com.foodary.vo.FoodVO"/>
+	<bean id="foodList" class="com.foodary.vo.FoodList"/>
+	<bean id="userFoodVO" class="com.foodary.vo.UserFoodVO"/>
+	<bean id="userFoodList" class="com.foodary.vo.UserFoodList"/>
 </beans>
 
 

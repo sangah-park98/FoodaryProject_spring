@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -68,8 +69,11 @@ public class HomeController {
 	}
 
 	@RequestMapping("/main/foodaryMainPageAfter")
-	public String foodaryMainPageAfter(HttpServletRequest request, Model model, UserRegisterVO userRegisterVO) {
-		
+	public String foodaryMainPageAfter(HttpServletRequest request, Model model) {
+		logger.info("foodaryMainPageAfter() 실행");
+		HttpSession session = request.getSession();
+	    UserRegisterVO rvo = (UserRegisterVO) session.getAttribute("rvo");
+
 		int currentPage = 1;
 		int pageSize = 11;
 		try {

@@ -9,9 +9,9 @@
 <title>로그인 후 메인페이지</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="css/fiveGrid.css"/>
-<script type="text/javascript" src="js/jquery-3.7.0.js"></script>
-<script type="text/javascript" src="js/mainFunction.js"></script>
+<link rel="stylesheet" href="../css/fiveGrid.css"/>
+<script type="text/javascript" src="../js/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="../js/mainFunction.js"></script>
 <script type="text/javascript">
 	var message = "${msg}";
 	if (message) {
@@ -39,7 +39,7 @@
 	<div class="mainLeft">
 		<div style="height: 200px;" id="showMenu" align="center">
 				<button type="button" onclick="showMenu()"><span style="background: lavender; color:black; font-size: 30pt;"><오늘의 메뉴 추천></span></button>
-				<img src="./images/polra.png" height="270px;">
+				<img src="../images/polra.png" height="270px;">
 		</div>
 			<br><br><br><br><br><br><br><br><br>
 			<!-- 영상 -->
@@ -56,14 +56,14 @@
 		<!-- 식단 쓰러가기 버튼 -->
 		<div style="width: 100%; height: auto; margin-top: 20px;" align="center">
 			<div style="height: 180px;">
-				<div style="display: inline-block; background-image:url('./images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
-					<a href="/foodary_final/JSP_food/selectDate.jsp"
+				<div style="display: inline-block; background-image:url('../images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
+					<a href="../diet/dietInsertView?id=${rvo.id}"
 						style=" color: black; font-size: 40pt; cursor: pointer; text-decoration: none;">
 						식단 쓰기
 					</a>
 				</div>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div style="display: inline-block; background-image:url('./images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
+				<div style="display: inline-block; background-image:url('../images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
 					<a href="/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=${dietWriteDate}&dietWriteTime=${dietWriteTime}"
 						style=" color: black; font-size: 40pt; cursor: pointer; text-decoration: none;">
 						식단 보기
@@ -74,8 +74,8 @@
 		<!-- 자유게시판 -->
 		<div style="width: 100%; height: auto;" align="center">
 			<div align="center" style="display: inline-block;
-			background-image:url('./images/spring.png'); background-repeat:no-repeat; width: 700px; height: 600px; padding-top: 70px;">
-				<%-- <jsp:include page="./mainFreeboardListAfter.jsp"/> --%>
+			background-image:url('../images/spring.png'); background-repeat:no-repeat; width: 700px; height: 600px; padding-top: 70px;">
+				<jsp:include page="./mainFreeboardListAfter.jsp"/>
 			</div>
 		</div>
 	</div>
@@ -86,7 +86,7 @@
 		</div>
 		<br><br><br>
 		<div style="text-align: center; width: auto; margin-left: 15px;">
-			<%-- <jsp:include page="./mainCalendarAfter.jsp"/> --%>
+			<jsp:include page="./mainCalendarAfter.jsp"/>
 		</div>
 	</div>
 <!-- footer 영역 -->

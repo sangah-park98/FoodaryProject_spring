@@ -25,7 +25,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private SqlSession sqlSession; 
+    private SqlSession sqlSession;
 	
     @RequestMapping("/register/register")
     public String register(HttpServletRequest request, Model model) {
@@ -88,19 +88,13 @@ public class UserController {
         UserRegisterVO userRegisterVO = mapper.selectByInfo(hmap);
 
         if (userRegisterVO != null) {
-            model.addAttribute("rvo", userRegisterVO);
-            return "main/foodaryMainPageAfter";
+        	HttpSession session = request.getSession();
+    	    session.setAttribute("rvo", userRegisterVO);
+    	    return "redirect:/main/foodaryMainPageAfter";
         } else {
             model.addAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다.\\n입력하신 내용을 다시 확인해주세요.");
             return "main/foodaryMainPageBefore";
         }
-    }
-    
-    @RequestMapping("/register/logoutOK")
-    public String logoutOK(HttpServletRequest request, Model model, String username) {
-    	logger.info("logoutOK() 실행");
-    	model.addAttribute("msg", username + "님 안녕히 가세요.");
-    	return "main/foodaryMainPageBefore";
     }
     
     @RequestMapping("/register/findId")

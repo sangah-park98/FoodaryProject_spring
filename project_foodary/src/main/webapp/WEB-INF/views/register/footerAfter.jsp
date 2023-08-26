@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>푸터 로그인 후</title>
+<title>푸터 로그인 전</title>
 </head>
 <body>
 	<div style="height: 200px; line-height: 70px; display: flex; justify-content: space-between; background: #f0f0f0">
 			<div style="line-height: 40px;">
 				<h5 style="margin:20px; font-size: 20pt;">Copyright &copy;</h5>
 				<h5 style="margin:20px; font-size: 20pt;">아무래도</h5>
-				<a href="/foodary_final/JSP_main/foodaryMainPageAfter.jsp"
+				<a href="../main/foodaryMainPageAfter"
 				style="font-family: 'insungitCutelivelyjisu';
 				margin:10px; font-size: 25pt; font-weight:900; color: black; text-decoration: none;">Foodary</a>
 			</div>

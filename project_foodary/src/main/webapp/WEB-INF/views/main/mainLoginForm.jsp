@@ -6,7 +6,7 @@
 <title>메인 로그인 폼</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/loginOK" method="post">
+	<form action="loginOK" method="post">
 	    <table width="300px;" cellpadding="5" cellspacing="5" align="center">
 	       <tr>
 	          <th style="text-align: center; font-size: 20pt; padding-right: 40px;">

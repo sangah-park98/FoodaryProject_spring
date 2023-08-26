@@ -43,13 +43,13 @@
     <div class="mainCenter">
 		<div style="width: 100%; height: auto; margin-top: 20px;" align="center">
 			<div style="height: 180px;">
-				<div style="display: inline-block; background-image:url('../images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
+				<div style="display: inline-block; background-image:url('./images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
 					<a href="#" style=" color: black; font-size: 40pt; cursor: pointer; text-decoration: none;" onclick="alert('로그인 후 이용 가능한 메뉴입니다.')">
 						식단 쓰기
 					</a>
 				</div>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div style="display: inline-block; background-image:url('../images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
+				<div style="display: inline-block; background-image:url('./images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
 					<a href="#" style=" color: black; font-size: 40pt; cursor: pointer; text-decoration: none;" onclick="alert('로그인 후 이용 가능한 메뉴입니다.')">
 						식단 보기
 					</a>
@@ -59,12 +59,12 @@
 		<div style="width: 100%; height: auto;" align="center">
 			<div align="center" style="display: inline-block;
 			background-image:url('./images/spring.png'); background-repeat:no-repeat; width: 700px; height: 600px; padding-top: 65px;">
-				<%-- <jsp:include page="./mainFreeboardList.jsp"/> --%>
+				<jsp:include page="./mainFreeboardList.jsp"/>
 			</div>
 		</div>
 	</div>
     <div class="mainRight">
-		<div style="background-image:url('../images/memo.png'); margin-left: 30px;
+		<div style="background-image:url('./images/memo.png'); margin-left: 30px;
 				background-size:260px; background-repeat:no-repeat; width: 270px; height: 270px; padding-top: 70px;">
 			<div>
 				<jsp:include page="./mainLoginForm.jsp"/><br/><br/>

@@ -42,6 +42,7 @@ public class FreeboardController {
 	   @RequestMapping("/freeboard/insertOK")
 	   public String insertOK(MultipartHttpServletRequest request, Model model, FreeboardVO freeboardVO, UserRegisterVO userRegisterVO) {
 	      logger.info("insertOK() 메소드 실행 -  커맨드 객체 사용");
+	      logger.info("{}", userRegisterVO);
 	      FreeboardDAO mapper = sqlSession.getMapper(FreeboardDAO.class);
 	      String rootUploadDir = "C:\\start_nsy\\spring\\workspace\\foodary\\src\\main\\webapp\\WEB-INF";
 	      File dir = new File(rootUploadDir + File.separator + "upload");
@@ -145,8 +146,9 @@ public class FreeboardController {
 	   }
 	   
 	   @RequestMapping("/freeboard/contentView")
-	   public String contentView(HttpServletRequest request, Model model) {
+	   public String contentView(HttpServletRequest request, Model model, UserRegisterVO rvo) {
 	      logger.info("contentView() 메소드 실행");
+	      logger.info("{}", rvo);
 	      FreeboardDAO mapper = sqlSession.getMapper(FreeboardDAO.class);
 	      int idx = Integer.parseInt(request.getParameter("idx"));
 		

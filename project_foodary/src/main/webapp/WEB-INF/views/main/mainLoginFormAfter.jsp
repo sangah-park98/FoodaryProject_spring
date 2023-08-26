@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="register/myPageOK" method="post">
-		<div style="display: inline-block; background-image:url('./images/memo.png'); margin-left: 30px;
+		<div style="display: inline-block; background-image:url('../images/memo.png'); margin-left: 30px;
 		background-size:260px; background-repeat:no-repeat; width: 270px; height: 270px; padding-top: 70px;">
 			<div>
 				<table width="300px;" id="mainLoginForm" cellpadding="5" cellspacing="5" align="center">
@@ -21,12 +21,19 @@
 			       <tr>
 			          <td style="text-align: center; padding-right: 50px;">
 						<input id="idx" type="hidden" name="idx" value="${rvo.idx}"/>
-			            <button type="submit">
-			            	<span style="background: lavender; color:black; font-size: 25pt;">MY페이지</span>
-			            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			            <button type="button" onclick="location.href='register/logoutOK?username=${rvo.username}'">
-			            	<span style="background: lavender; color:black; font-size: 25pt;">로그아웃</span>
-			            </button>
+				         <button type="button" onclick="location.href='/foodary/register/myPage'">
+						    <span style="background: lavender; color:black; font-size: 25pt;">MY페이지</span>
+						</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			            <button type="button" onclick="logout('${rvo.username}')">
+    					<span style="background: lavender; color:black; font-size: 25pt;">로그아웃</span>
+				   </button>
+
+				<script>
+					function logout(username) {
+    					alert(username + "님 안녕히 가세요.");
+   					window.location.href = '/foodary/';
+					}
+				</script>
 			          </td>
 			       </tr>
 			    </table>

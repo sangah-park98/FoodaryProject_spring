@@ -23,7 +23,7 @@
 				<a href="../freeboard/listView" style="font-size: 27pt; color: black; text-decoration: none;">자유게시판</a>
 			</div>
 			<div style="padding-right : 20px;">
-				<a class="navbar-form navbar-right" href="/foodary_final/JSP_main/foodaryMainPageAfter.jsp"
+				<a class="navbar-form navbar-right" href="../main/foodaryMainPageAfter"
 				style="font-family: 'insungitCutelivelyjisu'; position:relative;  margin-top: 0; font-size: 30pt; font-weight:900; color: black; text-decoration: none;">Foodary</a>
 			</div>
 		</div>

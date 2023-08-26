@@ -13,7 +13,7 @@
 			<div style="line-height: 40px;">
 				<h5 style="margin:20px; font-size: 20pt;">Copyright &copy;</h5>
 				<h5 style="margin:20px; font-size: 20pt;">아무래도</h5>
-				<a href="/foodary_final/JSP_main/foodaryMainPageAfter.jsp"
+				<a href="../main/foodaryMainPageAfter"
 				style="font-family: 'insungitCutelivelyjisu';
 				margin:10px; font-size: 25pt; font-weight:900; color: black; text-decoration: none;">Foodary</a>
 			</div>
@@ -34,7 +34,7 @@
 					<a href="/foodary_final/JSP_food/selectDate.jsp" style="font-size: 20pt; color: black; text-decoration: none;">식단 쓰기</a><br/>
 					<a href="/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=${dietWriteDate}&dietWriteTime=${dietWriteTime}"
 						style="font-size: 20pt; color: black; text-decoration: none;">식단 보기</a><br/>
-					<a href="freeboard/freeboard/list" style="font-size: 20pt; color: black; text-decoration: none;">자유게시판</a>
+					<a href="../freeboard/listView" style="font-size: 20pt; color: black; text-decoration: none;">자유게시판</a>
 				</div>
 			</div>
 			<div style="text-align: center; line-height: 50px;">
