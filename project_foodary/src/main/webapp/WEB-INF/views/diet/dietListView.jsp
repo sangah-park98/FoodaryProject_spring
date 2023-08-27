@@ -38,37 +38,45 @@
 <%
    request.setCharacterEncoding("UTF-8");
 %>
-		<!-- =========================================== 달 력 ==================================================== -->   
-		   <%
-		   request.setCharacterEncoding("UTF-8"); 
-		   String dietWriteDate = request.getParameter("dietWriteDate");
-		   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		   LocalDate date = LocalDate.parse(dietWriteDate, formatter);
-		
-		   Calendar calendar = Calendar.getInstance();
-		   int year = calendar.get(Calendar.YEAR);
-		   int month = calendar.get(Calendar.MONTH) + 1;
-		   int day = calendar.get(Calendar.DATE); 
-		   
-		   year = date.getYear();
-		   month = date.getMonthValue();
-		   day = date.getDayOfMonth();
-		   
-		
-		   try {
-		      year = Integer.parseInt(request.getParameter("year"));
-		      month = Integer.parseInt(request.getParameter("month"));
-		      day = 1;
-		      
-		      if(month >= 13) {
-		         year++;
-		         month = 1;
-		      }else if(month <= 0) {
-		         year--;
-		         month = 12;
-		      }
-		   }catch(NumberFormatException e) { }
-		  %>
+<!-- =========================================== 달 력 ==================================================== -->   
+<%
+   request.setCharacterEncoding("UTF-8"); 
+   String dietWriteDate = request.getParameter("dietWriteDate");
+   
+   // dietWriteDate가 null이 아닌 경우에만 파싱 로직 수행
+   LocalDate date = null;
+   if (dietWriteDate != null) {
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+       date = LocalDate.parse(dietWriteDate, formatter);
+   }
+   
+   Calendar calendar = Calendar.getInstance();
+   int year = calendar.get(Calendar.YEAR);
+   int month = calendar.get(Calendar.MONTH) + 1;
+   int day = calendar.get(Calendar.DATE); 
+   
+   // date가 null인 경우에는 현재 날짜를 사용하도록 설정
+   if (date != null) {
+       year = date.getYear();
+       month = date.getMonthValue();
+       day = date.getDayOfMonth();
+   }
+   
+   try {
+      year = Integer.parseInt(request.getParameter("year"));
+      month = Integer.parseInt(request.getParameter("month"));
+      day = 1;
+      
+      if(month >= 13) {
+         year++;
+         month = 1;
+      } else if(month <= 0) {
+         year--;
+         month = 12;
+      }
+   } catch(NumberFormatException e) { }
+%>
+
 		<div>
 		<table width="700" border="0" align="center" cellpadding="10" cellspacing="20" style="text-align: center;">
 		   <tr>

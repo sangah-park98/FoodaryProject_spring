@@ -64,7 +64,7 @@
 				</div>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<div style="display: inline-block; background-image:url('../images/clipMemo.png'); background-repeat:no-repeat; width: 200px; padding-top: 30px;">
-					<a href="/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=${dietWriteDate}&dietWriteTime=${dietWriteTime}"
+					<a href="../diet/dietListView?id=${rvo.id}&dietWriteDate=${dietWriteDate}"
 						style=" color: black; font-size: 40pt; cursor: pointer; text-decoration: none;">
 						식단 보기
 					</a>

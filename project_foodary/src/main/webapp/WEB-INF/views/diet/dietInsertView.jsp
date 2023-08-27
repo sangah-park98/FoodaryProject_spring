@@ -22,7 +22,7 @@
 <body onload = "showNutrient()">
 <div class="container">
    <div class="header">
-      <jsp:include page="./headerAfter.jsp"></jsp:include>
+      <jsp:include page="./headerAfter.jsp"/>
    </div>
 <div class="main" style="text-align: center;" align="center">
 <input id="id" type="hidden" name="id" value="${rvo.id}"/>
@@ -72,18 +72,16 @@
       <!-- form값으로 시간 데이터 보내기 위한 input,hidden태그 -->
       <div class="diet">
       <table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
-      	
          <!-- 1 -->
          <tr>
             <td align="center">
-             <!-- <button  type="button" onclick="foodList()">검색</button>  -->
                 <button  type="button" onclick="location.href='foodList'" style="background: none; border: 0; cursor: pointer;">
                    <span style="background: #baffda; font-size: 35px; font-weight: 900;">음식 검색하러 가기</span>
                 </button>
             </td>
          </tr>
        </table>
-             <!-- 2 -->
+        <!-- 2 -->
         <table width="1400" align="center" border="0" cellpadding="0" cellspacing="10">
          <tbody id="tableBody">
          <c:if test="${not empty foodNames}">
@@ -229,7 +227,6 @@
       </tr>
        </table>
    </div>
-       <!-- 6 -->
         <!-- 6 -->
 		    <table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
 		    <tr style="height: 30px;"></tr>
@@ -291,7 +288,7 @@
       </form>
 </div>
    <div class="footer">
-      <jsp:include page="./footerAfter.jsp"></jsp:include>
+      <jsp:include page="./footerAfter.jsp"/>
    </div>
 </div>
 </body>

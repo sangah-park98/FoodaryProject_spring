@@ -2,7 +2,6 @@ package com.foodary.foodary;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,26 +15,21 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.foodary.dao.DietDAO;
-import com.foodary.dao.FreeboardDAO;
+import com.foodary.vo.DietList;
+import com.foodary.vo.DietVO;
 import com.foodary.vo.FoodList;
-import com.foodary.vo.FreeboardCommentList;
-import com.foodary.vo.FreeboardCommentVO;
-import com.foodary.vo.FreeboardList;
-import com.foodary.vo.FreeboardVO;
 import com.foodary.vo.UserFoodList;
 import com.foodary.vo.UserFoodVO;
-import com.foodary.vo.UserRegisterVO;
 
 @Controller
 public class DietController {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(DietController.class);
+	
 	@Autowired
-	private SqlSession sqlSession; 
+	private SqlSession sqlSession;
 	
 	@RequestMapping("/diet/dietInsertView")
 	public String dietInsertView(HttpServletRequest request, Model model, UserFoodVO userFoodVO) {
@@ -112,10 +106,112 @@ public class DietController {
 		
 		return "diet/foodListView";
 	}
+
+	@RequestMapping("/diet/userFoodInsert")
+	public String userFoodInsert(HttpServletRequest request, Model model, UserFoodVO userFoodVO) {
+		logger.info("userFoodInsert 메소드 실행");
+		DietDAO mapper = sqlSession.getMapper(DietDAO.class);
+		logger.info("{}", userFoodVO);
+		
+		mapper.userFoodInsert(userFoodVO);
+	
+		return "redirect:dietInsertView";
+	}
+
+	@RequestMapping("/diet/updateUserFood")
+	public String updateUserFood(HttpServletRequest request, Model model, UserFoodVO userFoodVO) {
+		logger.info("updateUserFood 메소드 실행");
+		DietDAO mapper = sqlSession.getMapper(DietDAO.class);
+		logger.info("{}", userFoodVO);
+		
+		mapper.updateUserFood(userFoodVO);
+		
+		return "redirect:dietInsertView";
+	}
+
+	@RequestMapping("/diet/deleteUserFood")
+	public String deleteUserFood(HttpServletRequest request, Model model, UserFoodVO userFoodVO) {
+		logger.info("updateUserFood 메소드 실행");
+		DietDAO mapper = sqlSession.getMapper(DietDAO.class);
+		logger.info("{}", userFoodVO);
+		
+		mapper.deleteUserFood(userFoodVO.getIdx());
+	
+		return "redirect:dietInsertView";
+	}
+
+	@RequestMapping("/diet/dietInsert")
+	public String dietInsert(HttpServletRequest request, Model model, DietVO dietVO, UserFoodList userFoodList) {
+		logger.info("========== dietList 메소드 실행 ===========");
+		DietDAO mapper = sqlSession.getMapper(DietDAO.class);
+		logger.info("{}", dietVO);
+		logger.info("{}", userFoodList);
+		
+		mapper.insertDiet(dietVO);
+		
+		DietVO getIdx = mapper.getIdx(0);
+		
+		int idx = getIdx.getIdx();
+		
+		mapper.setDietGup(idx);
+		mapper.setUserFoodGup(idx);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("foodNames", null);
+		model.addAttribute("gup", idx);
+		
+		return "redirect:dietListView";
+	}
+
+	
+	@RequestMapping("/diet/dietListView")
+	public String dietListView(HttpServletRequest request, Model model) {
+		logger.info("fdietListView 메소드 실행");
+		DietDAO mapper = sqlSession.getMapper(DietDAO.class);
+		String dietWriteDate = request.getParameter("dietWriteDate");
+		
+		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
+		DietList dietList = ctx.getBean("dietList", DietList.class);
+		dietList.setList(mapper.selectDietList(dietWriteDate));
+		UserFoodList userFoodList = ctx.getBean("userFoodList", UserFoodList.class);
+		
+		logger.info("{}", dietList.getList());
+		for (int i=0; i<dietList.getList().size(); i++) {
+			DietVO dietVO = dietList.getList().get(i);
+			ArrayList<UserFoodVO> userFoodGup = mapper.userFoodListGup(dietVO.getGup());
+		    
+		    userFoodList.getList().addAll(userFoodGup);
+		}
+		
+		logger.info("{}", userFoodList);
+		model.addAttribute("dietList", dietList);
+		model.addAttribute("userFoodList", userFoodList);
+		model.addAttribute("dietWriteDate", dietWriteDate);
+		
+		return "diet/dietListView";
+	}
+
+	@RequestMapping("/diet/dietView")
+	public String dietView(HttpServletRequest request, Model model) {
+		logger.info("fdietListView 메소드 실행");
+		DietDAO mapper = sqlSession.getMapper(DietDAO.class);
+		String dietWriteDate = request.getParameter("dietWriteDate");
+		String dietWriteTime = request.getParameter("dietWriteTime");
+		
+		HashMap<String, String> hmap = new HashMap<String, String>();
+		hmap.put("dietWriteDate", dietWriteDate);
+		hmap.put("dietWriteTime", dietWriteTime);
+		DietVO dvo = mapper.selectDiet(hmap);
+		
+		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
+		UserFoodList userFoodList = ctx.getBean("userFoodList", UserFoodList.class);
+		
+		userFoodList.setList(mapper.userFoodListGup(dvo.getGup()));
+		
+		model.addAttribute("dvo", dvo);
+		model.addAttribute("userFoodList", userFoodList);
+		
+		return "diet/dietView";
+	}
 	
 }
-
-
-
-
-

@@ -23,7 +23,7 @@ function addData() {
     });
     
     // 선택한 데이터를 배열로 URL 매개변수로 전달하여 페이지 이동
-    var url = './dietInsert?';
+    var url = './dietInsertView?';
     for (var i = 0; i < foodNames.length; i++) {
       url += 'foodName=' + encodeURIComponent(foodNames[i]) +
              '&kcal=' + encodeURIComponent(kcals[i]) +
@@ -75,7 +75,7 @@ function searchProcess() {
 		let result = object.result;
 		console.log(result);
 		
-		//서블릿에서 수신된 데이터를 출력하기 위해 <tbody>태그를 얻어온다. 
+		//서블릿에서 수신된 데이터를 출력하기 위해 <tbody>탤그를 얻어온다. 
 		let tbody = document.getElementById('ajaxTable');
 		//새로 검색된 데이터가 표시되어야 하므로 이전에 <tbody>태그에 들어있던 내용은 지운다.
 		tbody.innerHTML = "";
