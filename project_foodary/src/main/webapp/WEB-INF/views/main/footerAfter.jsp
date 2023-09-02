@@ -31,8 +31,8 @@
 				<fmt:formatDate  value="${time}" pattern="HH:mm" var="dietWriteTime"/>
 			<div style="text-align: center;">
 				<div>
-					<a href="/foodary_final/JSP_food/selectDate.jsp" style="font-size: 20pt; color: black; text-decoration: none;">식단 쓰기</a><br/>
-					<a href="/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=${dietWriteDate}&dietWriteTime=${dietWriteTime}"
+					<a href="../diet/dietInsertView?id=${rvo.id}" style="font-size: 20pt; color: black; text-decoration: none;">식단 쓰기</a><br/>
+					<a href="../diet/dietListView?id=${rvo.id}&dietWriteDate=${dietWriteDate}"
 						style="font-size: 20pt; color: black; text-decoration: none;">식단 보기</a><br/>
 					<a href="../freeboard/listView" style="font-size: 20pt; color: black; text-decoration: none;">자유게시판</a>
 				</div>

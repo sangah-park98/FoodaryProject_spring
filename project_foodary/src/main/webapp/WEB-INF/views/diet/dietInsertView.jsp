@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>음식목록</title>
+<title>음식 목록</title>
 <!-- bootstrap -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -66,7 +66,6 @@
       </c:if>>매우 많은 운동량
    </option>
 </select>
-
 	<span style="background: #fafcd9; font-size: 50pt; font-weight: 900;">푸드어리 쓰기</span>
       <form action="dietInsert" method="post">
       <!-- form값으로 시간 데이터 보내기 위한 input,hidden태그 -->

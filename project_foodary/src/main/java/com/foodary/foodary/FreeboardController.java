@@ -1,7 +1,10 @@
 package com.foodary.foodary;
 
 import java.io.File;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -41,41 +44,44 @@ public class FreeboardController {
 	   
 	   @RequestMapping("/freeboard/insertOK")
 	   public String insertOK(MultipartHttpServletRequest request, Model model, FreeboardVO freeboardVO, UserRegisterVO userRegisterVO) {
-	      logger.info("insertOK() 메소드 실행 -  커맨드 객체 사용");
-	      logger.info("{}", userRegisterVO);
-	      FreeboardDAO mapper = sqlSession.getMapper(FreeboardDAO.class);
-	      String rootUploadDir = "C:\\start_nsy\\spring\\workspace\\foodary\\src\\main\\webapp\\WEB-INF";
-	      File dir = new File(rootUploadDir + File.separator + "upload");
-	      if (!dir.exists()) {
-	    	  dir.mkdirs();
-	      }
-	      Iterator<String> iterator = request.getFileNames();
-	      String uploadFileName = "";
-	      MultipartFile multipartFile = null;
-	      String originalName = "";
-	      
-	      try {
-	    	  uploadFileName = iterator.next();
-	    	  multipartFile = request.getFile(uploadFileName);
-	    	  String picture = multipartFile.getOriginalFilename();
-	    	  String realFilePath = dir.getPath();
-	    	  freeboardVO.setId(userRegisterVO.getId());
-	    	  freeboardVO.setPicture(picture);
-	    	  freeboardVO.setRealFilePath(realFilePath);
-	    	  logger.info("{}", freeboardVO);
-	    	  mapper.freeboardInsert(freeboardVO);
-	    	  
-	      } catch (Exception e) {
-				String picture = "";
-				String realFilePath = "";
-				freeboardVO.setId(userRegisterVO.getId());
-				freeboardVO.setPicture(picture);
-				freeboardVO.setRealFilePath(realFilePath);
-				logger.info("{}", freeboardVO);
-				mapper.freeboardInsert(freeboardVO);
-	      } 
-	      	model.addAttribute("result", "insertOK");
-	    	return "redirect:listView";
+		   logger.info("insertOK() 메소드 실행 -  커맨드 객체 사용");
+		      FreeboardDAO mapper = sqlSession.getMapper(FreeboardDAO.class);
+		      String rootUploadDir = "C:\\upload";
+		      
+		      Date date = new Date();
+		      SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
+		      logger.info(sdf.format(date));
+		      
+		      Iterator<String> iterator =  request.getFileNames();
+		      String uploadFileName = "";
+		      MultipartFile multipartFile = null;
+		      
+		      
+		      try {
+		    	  uploadFileName = iterator.next();
+		    	  logger.info(uploadFileName);
+		    	  multipartFile = request.getFile(uploadFileName);
+		    	  String picture = sdf.format(date) + "_" +multipartFile.getOriginalFilename();
+		    	  File dir = new File(rootUploadDir, picture);
+		    	  String realFilePath = dir.getPath();
+		    	  multipartFile.transferTo(dir);
+		    	  freeboardVO.setId(userRegisterVO.getId());
+		    	  freeboardVO.setPicture(picture);
+		    	  freeboardVO.setRealFilePath(realFilePath);
+		    	  logger.info("{}", freeboardVO);
+		    	  mapper.freeboardInsert(freeboardVO);
+		    	  
+		      } catch (Exception e) {
+					String picture = "";
+					String realFilePath = "";
+					freeboardVO.setId(userRegisterVO.getId());
+					freeboardVO.setPicture(picture);
+					freeboardVO.setRealFilePath(realFilePath);
+					logger.info("{}", freeboardVO);
+					mapper.freeboardInsert(freeboardVO);
+		      } 
+		      	model.addAttribute("result", "insertOK");
+		    	return "redirect:listView";
 	   }
 	   
 	   @RequestMapping("/freeboard/listView")
@@ -109,15 +115,15 @@ public class FreeboardController {
 		   try {
 			   if (request.getParameter("result").equals("insertOK")) {
 				   messages = "<script type='text/javascript'>" +
-						   "alert('게시글이 성공적으로 저장되었습니다')</script>";
+						   "alert('게시글이 성공적으로 저장되었습니다.')</script>";
 				   model.addAttribute("result", messages);
 			   } else if (request.getParameter("result").equals("deleteOK")) {
 				   messages = "<script type='text/javascript'>" +
-						   "alert('게시글 삭제 완료')</script>";
+						   "alert('게시글 삭제 완료!')</script>";
 				   model.addAttribute("result", messages);
 			   }  else if (request.getParameter("result").equals("updateOK")) {
 				   messages = "<script type='text/javascript'>" +
-						   "alert('게시글 수정 완료')</script>";
+						   "alert('게시글 수정 완료!')</script>";
 				   model.addAttribute("result", messages);
 			   }
 		   } catch (Exception e) { }
@@ -193,7 +199,6 @@ public class FreeboardController {
 		   	FreeboardDAO mapper = sqlSession.getMapper(FreeboardDAO.class);
 		   	int idx = Integer.parseInt(request.getParameter("idx"));
 		   	int currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		   	
 		   	mapper.freeboardDelete(idx);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("result", "deleteOK");

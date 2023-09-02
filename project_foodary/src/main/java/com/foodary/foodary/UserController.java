@@ -70,17 +70,17 @@ public class UserController {
     	return "main/mainLoginForm";
     }
     
-    @RequestMapping("/loginOK")
+    @RequestMapping("/main/loginOK")
     public String loginOK(HttpServletRequest request, Model model, String id, String password) {
         logger.info("loginOK() 실행");
         UserRegisterDAO mapper = sqlSession.getMapper(UserRegisterDAO.class);
 
         if (id == null || id.isEmpty()) {
             model.addAttribute("msg", "아이디를 입력해주세요.");
-            return "main/foodaryMainPageBefore";
+            return "main/mainLoginForm";
         } else if (password == null || password.isEmpty()) {
             model.addAttribute("msg", "비밀번호를 입력해주세요.");
-            return "main/foodaryMainPageBefore";
+            return "main/mainLoginForm";
         }
         HashMap<String, String> hmap = new HashMap<String, String>();
         hmap.put("id", id);
@@ -93,7 +93,7 @@ public class UserController {
     	    return "redirect:/main/foodaryMainPageAfter";
         } else {
             model.addAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다.\\n입력하신 내용을 다시 확인해주세요.");
-            return "main/foodaryMainPageBefore";
+            return "main/foodaryMainPageBefore2";
         }
     }
     

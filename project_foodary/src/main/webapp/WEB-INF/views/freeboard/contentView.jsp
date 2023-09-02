@@ -76,7 +76,7 @@
 					<c:set var="content" value="${fn:replace(content, enter, '<br/>')}"/>
 					${content}<br/>
 					<c:if test="${not empty vo.picture}">
-						<img src="../upload/${vo.picture}" style="max-width: 450px; max-height: 300px;">
+						<img src="/upload/${vo.picture}" style="max-width: 450px; max-height: 300px;">
 					</c:if>
 				</td>
 			</tr>

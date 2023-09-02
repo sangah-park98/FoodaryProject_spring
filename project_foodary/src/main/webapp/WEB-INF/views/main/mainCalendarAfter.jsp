@@ -59,21 +59,19 @@ Calendar calendar = Calendar.getInstance();
 		month = Integer.parseInt(request.getParameter("month"));
 		
 		if (month >= 13) {
-	year++;
-	month = 1;
+			year++;
+			month = 1;
 		} else if (month <= 0) {
-	year--;
-	month = 12;
+			year--;
+			month = 12;
 		}
-	} catch (NumberFormatException e) {
-		
-	}
+	} catch (NumberFormatException e) {}
 %>
-  <table width="290" align="center" cellpadding="5" cellspacing="2">
+<table width="290" align="center" cellpadding="5" cellspacing="2">
 	<tr>
 		<th>
 			<button type="button" 
-				onclick="location.href='foodaryMainPageAfter.jsp?year=<%=year%>&month=<%=month - 1%>'"
+				onclick="location.href='foodaryMainPageAfter?year=<%=year%>&month=<%=month - 1%>'"
 			>◀</button>
 		</th>
 		<th id="title" colspan="5" style="font-size: 15pt;">
@@ -81,7 +79,7 @@ Calendar calendar = Calendar.getInstance();
 		</th>
 		<th>
 			<button type="button" 
-				onclick="location.href='foodaryMainPageAfter.jsp?year=<%=year%>&month=<%=month + 1%>'">
+				onclick="location.href='foodaryMainPageAfter?year=<%=year%>&month=<%=month + 1%>'">
 				▶
 			</button>
 		</th>
@@ -96,7 +94,6 @@ Calendar calendar = Calendar.getInstance();
 		<th id="saturday" style="font-size: 13pt;">토</th>
 	</tr>
 	<tr>
-	
 <%
 	int week = FoodaryCalendar.weekDay(year, month, 1);
 		int start = 0;
@@ -113,12 +110,12 @@ Calendar calendar = Calendar.getInstance();
 			if (i == 0) {
 				out.println("<td><a id='beforesun'" + 
 				"style='font-size: 11pt; text-decoration: none; cursor: pointer; color: black;'" +
-				"href='/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=" + year + "-" + String.format("%02d", (month == 1 ? 12 : month - 1)) + "-" + String.format("%02d", ++start) + "'>"
+				"href='../diet/dietListView?dietWriteDate=" + year + "-" + String.format("%02d", (month == 1 ? 12 : month - 1)) + "-" + String.format("%02d", ++start) + "'>"
 				+ (month == 1 ? 12 : month - 1) + "/" + start + "</a></td>");
 			} else {
 				out.println("<td><a class='before'" +
 				"style='font-size: 11pt; text-decoration: none; cursor: pointer; color: black;'" +
-				"href='/foodary_final/JSP_diet/dietList.jsp?dietWriteDate="+ year + "-"  + String.format("%02d", (month == 1 ? 12 : month - 1)) + "-" + String.format("%02d", ++start) + "'>"
+				"href='../diet/dietListView?dietWriteDate="+ year + "-"  + String.format("%02d", (month == 1 ? 12 : month - 1)) + "-" + String.format("%02d", ++start) + "'>"
 				+ (month == 1 ? 12 : month - 1) + "/" + start + "</a></td>");
 			}
 		}
@@ -128,17 +125,17 @@ Calendar calendar = Calendar.getInstance();
 			
 			case 0: 
 				out.println("<td><a class='sun' style='font-size: 13pt; font-weight: 800; text-decoration: none; cursor: pointer; color: black;'" +
-						"href='/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=" + dietWriteDate + String.format("%02d", i) + "'>"
+						"href='../diet/dietListView?dietWriteDate=" + dietWriteDate + String.format("%02d", i) + "'>"
 					+ i + "</a></td>");
 				break;
 			case 6: 
 				out.println("<td><a class='sat' style='font-size: 13pt; font-weight: 800; text-decoration: none; cursor: pointer; color: black;'" +
-						"href='/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=" + dietWriteDate + String.format("%02d", i) + "'>"
+						"href='../diet/dietListView?dietWriteDate=" + dietWriteDate + String.format("%02d", i) + "'>"
 					+ i + "</a></td>");
 				break;
 			default:
 				out.println("<td><a id='day' style='font-size: 13pt; font-weight: 800; text-decoration: none; cursor: pointer; color: black;'" +
-						"href='/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=" + dietWriteDate + String.format("%02d", i) + "'>"
+						"href='../diet/dietListView?dietWriteDate=" + dietWriteDate + String.format("%02d", i) + "'>"
 					+ i + "</a></td>");
 			break;
 			}
@@ -160,11 +157,11 @@ Calendar calendar = Calendar.getInstance();
 			for (int i = week; i <= 6; i++) {
 				if (i==6) {
 					out.println("<td><a id='aftersat' style='font-size: 11pt; text-decoration: none; cursor: pointer; color: black;'"
-						+ "href='/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=" + year + "-" + String.format("%02d", (month == 12 ? 1 : month + 1)) + "-" + String.format("%02d", start) + "'>"
+						+ "href='../diet/dietListView?dietWriteDate=" + year + "-" + String.format("%02d", (month == 12 ? 1 : month + 1)) + "-" + String.format("%02d", start) + "'>"
 						+ (month == 12 ? 1 : month + 1) + "/" + start++ + "</a></td>");
 				} else {
 					out.println("<td><a class='after' style='font-size: 11pt; text-decoration: none; cursor: pointer; color: black;'"
-						+ "href='/foodary_final/JSP_diet/dietList.jsp?dietWriteDate=" + year + "-" + String.format("%02d", (month == 12 ? 1 : month + 1)) + "-" + String.format("%02d", start) + "'>"
+						+ "href='../diet/dietListView?dietWriteDate=" + year + "-" + String.format("%02d", (month == 12 ? 1 : month + 1)) + "-" + String.format("%02d", start) + "'>"
 						+ (month == 12 ? 1 : month + 1) + "/" + start++ + "</a></td>");
 				}
 			}
