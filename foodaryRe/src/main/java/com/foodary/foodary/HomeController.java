@@ -30,7 +30,6 @@ public class HomeController {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
    // NaverLoginBO
    @Autowired
    public void setNaverLoginBO(NaverLoginBO naverLoginBO) {

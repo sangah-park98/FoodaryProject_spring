@@ -43,11 +43,9 @@ public class LoginController {
   @RequestMapping("/callback")
   public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, UserRegisterVO rvo) throws Exception {
     logger.info("callback() 실행");
-    
     UserDAO mapper = sqlSession.getMapper(UserDAO.class);
-    
     // 로그인 사용자 정보를 얻어온다.
-    logger.info("apiResult: {}", apiResult);
+    // logger.info("apiResult: {}", apiResult);
     
     OAuth2AccessToken oauthToken;
     oauthToken = naverLoginBO.getAccessToken(session, code, state);
@@ -62,7 +60,7 @@ public class LoginController {
      // 데이터 파싱
      JSONObject response_obj = (JSONObject) jsonObj.get("response");
      logger.info("response_obj: {}", response_obj);
-     // top 레벨 단계 데이터 파싱 결과에서 name만 파싱
+     // top 레벨 단계 데이터 파싱 결과에서 회원가입 시 넣어줄 항목들을 넣어준다.
      String username = (String) response_obj.get("name");
      logger.info("username: {}", username);
      String id = (String) response_obj.get("id");
@@ -83,19 +81,20 @@ public class LoginController {
      String age = year - Integer.parseInt(birthyear) + "";
      logger.info("age: {}", age);
      
+     // 네이버 로그인 API를 통해 얻어온 이름, 아이디, 이메일, 성별, 나이를 rvo 디비에 넣어준다.
      rvo.setUsername(username);
      rvo.setId(id);
      rvo.setEmail(email);
      rvo.setGender(gender);
      rvo.setAge(age);  
-     
+     // 디비에 save() 메소드를 실행해서 저장해준다.
      mapper.save(rvo);
      
      // 세션에 사용자 정보 등록
-     // session.setAttribute("islogin_r", "Y");
-     session.setAttribute("signIn", apiResult);
-     session.setAttribute("id", id); 
-     session.setAttribute("email", email);
+     session.setAttribute("islogin_r", "Y");
+     //  session.setAttribute("signIn", apiResult);
+     //  session.setAttribute("id", id); 
+     //  session.setAttribute("email", email);
      session.setAttribute("username", username);
      return "main/foodaryMainPageAfter";
   }

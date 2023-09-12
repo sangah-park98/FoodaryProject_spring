@@ -90,7 +90,7 @@
 						<table width="300px;" id="mainLoginForm"  cellpadding="5" cellspacing="5" align="center">
 					       <tr>
 					          <th style="text-align: center; font-size: 20pt; padding-right: 40px;">
-					         	 <span style="background: #baffda; font-size: 30px;">${rvo.username}</span> 님<br/>
+					         	 <span style="background: #baffda; font-size: 30px;">${username}</span> 님<br/>
 					         	 건강한 하루 되세요!
 					          </th>
 					       </tr>

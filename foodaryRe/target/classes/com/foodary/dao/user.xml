@@ -7,6 +7,7 @@
 		insert into userregister (idx, username, id, email, gender, age)
 		values (userregister_idx_seq.nextval, #{username}, #{id}, #{email}, #{gender}, #{age})
 	</insert>
+	
 	<!-- 메인글 1건을 저장한다. -->
 	<insert id="userInsertRegister" parameterType="rvo">
 		insert into userregister (idx, username, id, password, email, gender, height, age, currentWeight, goalWeight, active, state)
