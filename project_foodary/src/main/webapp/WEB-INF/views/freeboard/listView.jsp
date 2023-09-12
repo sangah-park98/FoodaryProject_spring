@@ -220,7 +220,6 @@ ${result}
 							title="이미 마지막 페이지 입니다."
 						>▶▶</button>
 					</c:if>
-					
 				</td>
 				<td align="right">
 					<button type="button" onclick="location.href='insert'" style="background: none; border:0;">
@@ -236,12 +235,3 @@ ${result}
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

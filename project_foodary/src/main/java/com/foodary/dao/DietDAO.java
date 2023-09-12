@@ -34,8 +34,8 @@ public interface DietDAO {
 
 	void setUserFoodGup(int idx);
 
-	ArrayList<DietVO> selectDietList(String dietWriteDate);
-
+	ArrayList<DietVO> selectDietList(HashMap<String, String> hmap);
+	
 	ArrayList<UserFoodVO> userFoodListGup(int gup);
 
 	DietVO selectDiet(HashMap<String, String> hmap);

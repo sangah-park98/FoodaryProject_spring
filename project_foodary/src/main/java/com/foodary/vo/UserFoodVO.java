@@ -11,6 +11,8 @@ public class UserFoodVO {
 	private float protein;
 	private float fat;
 	
+	public UserFoodVO() {}
+	
 	public int getIdx() {
 		return idx;
 	}

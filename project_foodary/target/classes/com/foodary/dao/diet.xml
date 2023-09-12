@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="selectDietList" parameterType="String" resultType="dvo">
-		select * from diet where dietWriteDate = #{dietWriteDate} order by dietWriteTime asc
+		select * from diet where dietWriteDate = #{dietWriteDate} and id = #{id} order by dietWriteTime asc
 	</select>
 	
 	<select id="selectDietUpdateList" parameterType="dvo" resultType="dvo">

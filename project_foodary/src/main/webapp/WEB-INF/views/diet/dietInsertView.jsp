@@ -18,11 +18,49 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="../js/foodWrite.js" defer="defer"></script>
 <link rel="stylesheet" href="../css/threeGrid.css"/>
+<style type="text/css">
+	input[type='date']::before {
+	  content: attr(data-placeholder);
+	  width: 100%;
+	}
+
+	input[type='date']:active {
+	  content: attr(data-placeholder);
+	}
+
+	input[type='date'] {
+		padding: 5px;
+		width: 40%; width: 200px;
+		border-radius: 10px;
+	}
+
+	input[type='date']:focus::before,
+	input[type='date']:valid::before {
+	  display: none;
+	}
+
+	input[type='time']::before {
+	  content: attr(data-placeholder);
+	  width: 100%;
+	}
+
+	input[type='time'] {
+		padding: 5px;
+		width: 40%; width: 200px;
+		border-radius: 10px;
+	}
+	
+	input[type='time']:focus::before,
+	input[type='time']:valid::before {
+	  display: none;
+	}
+</style>
+
 </head>
-<body onload = "showNutrient()">
+<body onload="showNutrient()">
 <div class="container">
    <div class="header">
-      <jsp:include page="./headerAfter.jsp"/>
+      <jsp:include page="./headerAfter.jsp"></jsp:include>
    </div>
 <div class="main" style="text-align: center;" align="center">
 <input id="id" type="hidden" name="id" value="${rvo.id}"/>
@@ -32,7 +70,7 @@
 <input id="age" type="hidden" name="age" value="${rvo.age}">
 <input id="gender" type="hidden" name="gender" value="${rvo.gender}"/>
 <c:if test="${rvo.state eq 'health'}">
-    <input id="health" type="radio" name="mode" value="health" checked="checked" style="display: none;"/>
+	<input id="health" type="radio" name="mode" value="health" checked="checked" style="display: none;"/>
     <input id="diet" type="radio" name="mode" value="diet" style="display: none;"/>
 </c:if>
 <c:if test="${rvo.state eq 'diet'}">
@@ -66,73 +104,26 @@
       </c:if>>매우 많은 운동량
    </option>
 </select>
-	<span style="background: #fafcd9; font-size: 50pt; font-weight: 900;">푸드어리 쓰기</span>
-      <form action="dietInsert" method="post">
-      <!-- form값으로 시간 데이터 보내기 위한 input,hidden태그 -->
-      <div class="diet">
+<span style="background: #fafcd9; font-size: 50pt; font-weight: 900;">푸드어리 쓰기</span>
+  <!-- 최종적으로 저장하기 버튼을 눌렀을 때 dietController로 가는 경로 -->
+  <form action="dietInsert" method="post" enctype="multipart/form-data">
+      <!-- form값으로 시간 데이터 보내기 위한 input, hidden태그 -->
+   <div class="diet">
+      <!-- 음식 검색하러 가기를 눌렀을 때 팝업창을 띄우기 위해 openPopup()으로 넘어간다. -->
       <table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
-         <!-- 1 -->
          <tr>
             <td align="center">
-                <button  type="button" onclick="location.href='foodList'" style="background: none; border: 0; cursor: pointer;">
+ 				<button  type="button" onclick="openPopup()" style="background: none; border: 0; cursor: pointer;">
                    <span style="background: #baffda; font-size: 35px; font-weight: 900;">음식 검색하러 가기</span>
                 </button>
             </td>
          </tr>
        </table>
-        <!-- 2 -->
-        <table width="1400" align="center" border="0" cellpadding="0" cellspacing="10">
-         <tbody id="tableBody">
-         <c:if test="${not empty foodNames}">
-         <c:forEach var="index" begin="0" end="${fn:length(foodNames) - 1}">
-	        <input type="hidden" id="id" name="id" value="${rvo.id}"/>
-           <tr>
-            <td>
-               <input type="text" id="dietFoodName" name="dietFoodName" value="${foodNames[index]}" style="border: 0; font-size: 25pt; width: 150px; font-weight: 900;"/>
-            </td>
-            <td>
-              <span style="background: lavender; font-size: 25pt;">칼로리:</span>
-            </td>
-            <td>
-               <input type="text" id="dietKcal" name="dietKcal" value="${kcals[index]}" style="border: 0; font-size: 25pt; width: 80px;"/> kcal  
-            </td>
-            <td>
-                <span style="background: lavender; font-size: 25pt;">탄수화물:</span>
-            </td>
-            <td>
-               <input type="text" id="dietCarbs" name="dietCarbs" value="${carbss[index]}" style="border: 0; font-size: 25pt; width: 80px;"/> g   
-            </td>
-            <td>
-               <span style="background: lavender; font-size: 25pt;">단백질:</span>
-            </td>
-            <td>
-              <input type="text" id="dietProtein" name="dietProtein" value="${proteins[index]}" style="border: 0; font-size: 25pt; width: 80px;"/> g     
-            </td>
-            <td>
-                <span style="background: lavender; font-size: 25pt;">지방:</span>
-            </td>
-            <td>
-               <input type="text" id="dietFat" name="dietFat" value="${fats[index]}" style="border: 0; font-size: 25pt; width: 80px;"/> g     
-            </td>
-           <td align="center">
-         <button type="button" onclick="foodPlus(<c:out value='${index}'/>)" style="border: 0; font-size: 25pt; background: 0;">
-             <span style="background: #fafcd9; font-size: 25pt; font-weight: 900;">추가</span>
-         </button> 
-         </td>
-         </tr>
-         </c:forEach>
-       </c:if>
-       <c:if test="${empty foodNames}">
-        <tr>
-        </tr>
-      </c:if>
-       </tbody>
-       </table>
-         <!-- 3 -->
+     <!-- 팝업창에서 추가된 음식 목록을 띄운다. -->
      <table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
      <tbody id="tableBody">
        <fmt:requestEncoding value="UTF-8"/>
-       <!-- foodWriteInsert.jsp에서 request 영역에 저장한 foodList에서 1페이지 분량의 글을 꺼내온다. -->
+       <!-- 내가 추가한 음식 목록을 반복문을 사용하여 전부 불러온다. -->
        <c:set var="list" value="${userFoodList.list}"/>
        <c:if test="${list.size() != 0}">
        <c:forEach var="uvo" items="${list}" varStatus="status">
@@ -184,20 +175,38 @@
        </c:if>
      </tbody>
    </table>
-       <table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
-      <!-- 4 -->
-     <tr style="height: 50px;"></tr>
-           <!-- 시간 입력 -->
+   <table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
+     <tr style="height: 50px;"></tr> <!-- 공백 -->
+     <!-- 
+     	날짜 및 시간 입력
+     	required aria-required="true" : 화면에 '날짜 선택'을 유지시켜 주는 코드
+     -->
       <tr>
-         <td align="center">
-			<span style="background: lavender; font-size: 30pt;">날짜:</span> &nbsp;&nbsp;&nbsp;
-             <input type="date" id="dietWriteDate" name="dietWriteDate" style="width: 43%; width: 400px;"/> &nbsp;&nbsp;&nbsp;
+         <td align="center" colspan="12" class="text-center">
+			<span style="background: lavender; font-size: 30pt;" >날짜:</span> &nbsp;&nbsp;&nbsp;
+             <input
+             	type="date" 
+             	id="dietWriteDate"
+             	name="dietWriteDate"
+             	data-placeholder="날짜 선택"
+             	required
+  				aria-required="true"
+             />
+             &nbsp;&nbsp;&nbsp;
              <span style="background: lavender; font-size: 30pt;">시간:</span> &nbsp;&nbsp;&nbsp;
-             <input type="time" id="dietWriteDate" name="dietWriteTime" style="width: 43%; width: 400px;"/> <br>
+             <input
+             	type="time"
+             	id="dietWriteTime"
+             	name="dietWriteTime"
+             	data-placeholder="시간 선택"
+             	required
+  				aria-required="true"
+             />
          </td>
       </tr>
+      <tr style="height: 50px;"></tr> <!-- 공백 -->
       <tr>
-         <td colspan="2" class="text-center">
+         <td colspan="12" class="text-center">
             <span style="background: lavender; font-size: 30pt;">메모</span>
       <tr>
          <td colspan="12">
@@ -205,77 +214,75 @@
                id="memo"
                rows="5" 
                name="dietMemo" 
-               style="resize: none; width: 80%; height: 75%; vertical-align: middle; padding: 10px;"
+               style="resize: none; width: 70%; height: 75%; vertical-align: middle; padding: 10px; border-radius: 30px;"
                rows="10" 
                name="dietMemo" 
                style="resize: none; width: 97%; height: 75%; vertical-align: middle;"
                ></textarea>
          </td>
       </tr>
-      <!-- 5 -->
-      <tr style="display: none;">
-         <td colspan="3" class="text-center">
-            <label for="totalcalorie">사진첨부</label>
+      <tr style="height: 50px;"></tr> <!-- 공백 -->
+      <!-- 사진첨부 -->
+      <tr>
+         <td colspan="6" class="text-center" align="center">
+            <span style="background: lavender; font-size: 30pt; margin-left: 200px;">사진첨부</span>
          </td>
-         <td colspan="10" align="center">
-            <input type="text" id="province" name="province" placeholder="사진파일명" style="width: 95%;"/>   
-         </td>   
-         <td align="center">
-           <input type="button" value="파일선택" onclick="location.href='showDiet.jsp'"/>
-         </td>
+		 <td colspan="6" class="text-center" align="center">
+       		<input type="file" accept="image/*" name="fileName" onchange="photoView(event)" value="파일 선택" style="font-size: 20pt;"/>
+			<img id="output" style="max-width: 450px; max-height: 300px;"/><br/>
+		</td>
       </tr>
-       </table>
-   </div>
-        <!-- 6 -->
-		    <table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
-		    <tr style="height: 30px;"></tr>
-		     <tr>
-		        <td style="height: 40px; text-align: left;">
-                 <span style="background: lavender; font-size: 25pt; margin-left: 300px;"><칼로리></span>
-                 <div class="progress" style="height: 40px; width: 800px; margin-left: auto; margin-right: auto;">
-                   <div id="kcalGraph" class="progress-bar" role="progressbar" 
-                   aria-valuemin="0" style="width:0%; height: 40px; font-size: 18pt; background: #8800ff;">
-                   </div>
-                 </div>
-               </td>   
-            </tr>
-           <!-- 7 -->
-           <tr style="height: 30px;"></tr>
-            <tr>
+      <tr style="height: 50px;"></tr> <!-- 공백 -->
+    </table>
+  </div>
+  
+    <!-- 칼로리, 탄수화물, 지방 영양소 그래프 -->
+	<table width="1400" align="center" border="0" cellpadding="10" cellspacing="10">
+		<tr style="height: 30px;"></tr> <!-- 공백 -->
+		<tr>
+	       <td style="height: 40px; text-align: left;">
+             <span style="background: lavender; font-size: 25pt; margin-left: 300px;"><칼로리></span>
+             <div class="progress" style="height: 40px; width: 800px; margin-left: auto; margin-right: auto;">
+               <div id="kcalGraph" class="progress-bar" role="progressbar" 
+               aria-valuemin="0" style="width:0%; height: 40px; font-size: 18pt; background: #8800ff;">
+               </div>
+             </div>
+           </td>   
+	    </tr>
+        <tr style="height: 30px;"></tr>
+          <tr>
              <td style="height: 40px; text-align: left;">
                 <span style="background: lavender; font-size: 25pt; margin-left: 300px;"><탄수화물></span>
                 <div class="progress" style="height: 40px; width: 800px; margin-left: auto; margin-right: auto;">
                   <div id="carbsGraph" class="progress-bar progress-bar-info" role="progressbar" 
                      aria-valuemin="0" style="width:0%; height: 40px; font-size: 18pt; background: #8800ff;">
-                     
                   </div>
                 </div>
              </td>
-            </tr>
-            <tr style="height: 30px;"></tr>
-            <tr>
+          </tr>
+          <tr style="height: 30px;"></tr>
+          <tr>
              <td style="height: 40px; text-align: left;">
-                  <span style="background: lavender; font-size: 25pt; margin-left: 300px;"><단백질></span>
+                <span style="background: lavender; font-size: 25pt; margin-left: 300px;"><단백질></span>
                 <div class="progress" style="height: 40px; width: 800px; margin-left: auto; margin-right: auto;">   
-                     <div id="proteinGraph" class="progress-bar progress-bar-info" role="progressbar"
+                   <div id="proteinGraph" class="progress-bar progress-bar-info" role="progressbar"
                         aria-valuemin="0" style="width:0%; height: 40px; font-size: 18pt; background: #8800ff;">
-                        
-                     </div>
+                   </div>
                 </div>
              </td>
-            </tr>
-            <tr style="height: 30px;"></tr>
-            <tr>
+          </tr>
+          <tr style="height: 30px;"></tr>
+          <tr>
              <td style="height: 40px; text-align: left;">
-                   <span style="background: lavender; font-size: 25pt; margin-left: 300px;"><지방></span>
+                <span style="background: lavender; font-size: 25pt; margin-left: 300px;"><지방></span>
                 <div class="progress" style="height: 40px; width: 800px; margin-left: auto; margin-right: auto;">
-                     <div id="fatGraph" class="progress-bar progress-bar-info" role="progressbar"
-                        aria-valuemin="0" style="width:0%; height: 40px; background: #8800ff;">
-                     </div>
+                   <div id="fatGraph" class="progress-bar progress-bar-info" role="progressbar"
+                      aria-valuemin="0" style="width:0%; height: 40px; background: #8800ff;">
+                   </div>
                 </div>
              </td>
-		    </tr>
-          <!-- 8 -->
+		  </tr>
+          <!-- 식단 최종 저장버튼 -->
           <tr>
              <td class="text-center">
                 <button type="submit" style="background: none; border: 0; cursor: pointer;">
@@ -284,11 +291,12 @@
              </td>
           </tr>
      	</table>
+     	<input type="hidden" value="${rvo.id}" id="id" name="id"/>
       </form>
 </div>
-   <div class="footer">
-      <jsp:include page="./footerAfter.jsp"/>
-   </div>
+<div class="footer">
+	<jsp:include page="./footerAfter.jsp"/>
+</div>
 </div>
 </body>
 </html>

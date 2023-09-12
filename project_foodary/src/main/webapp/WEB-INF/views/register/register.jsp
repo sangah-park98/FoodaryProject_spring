@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" href="../css/threeGrid.css"/>
 <link rel="stylesheet" href="../css/bootstrap.css"/>
+<script type="text/javascript" src="../js/jquery-3.7.0.js"></script>
 <script type="text/javascript" src="../js/bootstrap.js"></script>
 <script type="text/javascript" src="../js/userRegister.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -144,7 +144,6 @@
                </tr>
             </table>
             <input type="hidden" name="ip" onclick="userRegister()"/> 
-            <%-- <input type="hidden" name="currentPage" value="<%=currentPage%>"/> --%>
          </form>
       </div>
       <br><br><br>
@@ -174,7 +173,7 @@
                <%-- ${messageContent} --%>
             </div>
             <!-- 풋터 -->
-            <div class="modal-footer">
+            <div class="modal-footer" style="border: 0;">
                <button type="button" data-dismiss="modal" style="background: none; border: 0; cursor: pointer;">
                   <span style="background: #fafcd9; font-size: 25pt;; font-weight: 800;">닫기</span>
                   </button>

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,11 +42,24 @@ public class UserController {
     	model.addAttribute("msg", "회원가입에 성공했습니다.");
     	return "redirect:/";
     }
+
+   @RequestMapping(value = "/UserRegisterCheck", method = RequestMethod.POST) //
+   @ResponseBody
+   public String memberServlet(HttpServletRequest request, Model model, UserRegisterVO userRegisterVO) {
+	 UserRegisterDAO mapper = sqlSession.getMapper(UserRegisterDAO.class);
+	 logger.info("{} line125", userRegisterVO);
+	 String userID = request.getParameter("id").trim();
+	 int result = 0;
+	 if (userID.equals("")) {
+		 result = 2;
+	 } else {
+		 result = mapper.idCheck(userRegisterVO.getId());
+	 }
+	 logger.info("{} line129", result);
+	 
+	 return result + "";
+	  }
     
-    @RequestMapping("/UserRegisterCheck")
-    public String userRegisterCheck(HttpServletRequest request, Model model) {
-    	return "main/foodaryMainPageBefore"; 
-    }
     
     @RequestMapping("/idCheck")
     @ResponseBody
@@ -93,7 +107,7 @@ public class UserController {
     	    return "redirect:/main/foodaryMainPageAfter";
         } else {
             model.addAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다.\\n입력하신 내용을 다시 확인해주세요.");
-            return "main/foodaryMainPageBefore2";
+            return "main/mainLoginForm";
         }
     }
     

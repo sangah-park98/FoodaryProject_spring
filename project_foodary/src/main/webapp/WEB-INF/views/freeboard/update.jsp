@@ -93,7 +93,7 @@
 							style="width: 550px; padding: 5px; resize: none;"
 							>${vo.content}</textarea>
 						<c:if test="${not empty vo.picture}">
-							<img id="output" src="/upload/${vo.picture}" style="max-width: 450px; max-height: 300px;">
+							<img id="output" src="/upload/freeboard/${vo.picture}" style="max-width: 450px; max-height: 300px;">
 						</c:if>
 					</td>
 				</tr>

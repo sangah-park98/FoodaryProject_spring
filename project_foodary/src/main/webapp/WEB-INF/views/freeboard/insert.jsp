@@ -39,12 +39,12 @@
 							value="${rvo.username}"
 							style="width: 200px; padding: 5px;" readonly="readonly"/>
 					</td>
-					<!-- 공지여부 -->
+					<!-- 공지 여부 -->
 					<th width="100" style="text-align: center; font-size: 20pt;">
 						공지글 : &nbsp; <input type="checkbox" name="notice"/>
 					</th>
 				</tr>
-				<!-- hidden으로 id넘기기 -->
+				<!-- hidden으로 id 넘기기 -->
 				<input id="id" type="hidden" name="id" value="${rvo.id}" style="width: 200px;"/>
 				<tr>
 					<th>
@@ -130,7 +130,7 @@
 								</select>
 							</fieldset> 일
 							&nbsp;&nbsp;
-					<button class="select" type="button" onclick="getDiet()"  style="border: 0; background: none; cursor: pointer;">
+					<button class="select" type="button" onclick="getDiet()" style="border: 0; background: none; cursor: pointer;">
 						<span style="background: lavender; font-size: 24pt; font-weight: 600;">불러오기</span>
 					</button>
 					</td>
@@ -140,6 +140,7 @@
 						<label for="subject" style="font-size: 20pt;">사진 첨부 :</label>
 					</th>
 					<td colspan="2">
+						<!-- accept="image/* : 이미지의 모든 파일 형식을 허용한다. -->
 		        		<input type="file" accept="image/*" name="fileName" onchange="photoView(event)" value="파일 선택"
 		        			style="font-size: 10pt;"/>
 						<img id="output" style="max-width: 450px; max-height: 300px;"/><br/>
@@ -175,17 +176,3 @@
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

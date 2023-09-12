@@ -27,7 +27,7 @@
 		]]>
 	</select>
 	
-	<!-- memo 필드에 검색어가 포함된 1페이지 분량의 글 목록을 얻어온다. -->
+	<!-- 내가 선택한 음식을 불러온다. -->
 	<select id="foodSearchList" parameterType="pvo" resultType="fvo">
 		<![CDATA[
 			select * from (

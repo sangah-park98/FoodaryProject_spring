@@ -9,6 +9,8 @@
 <title>로그인 전 메인페이지</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/foodary/css/main.css"/>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery-3.7.0.js"></script>
 <script type="text/javascript" src="js/mainFunction.js"></script>
 <script defer type="text/javascript" src="./js/mainCalculator.js"></script>
@@ -16,6 +18,12 @@
 <script src="js/skel.min.js"></script>
 <script src="js/util.js"></script>
 <script src="js/main.js"></script>
+<script type="text/javascript">
+	var message = "${msg}";
+	if (message) {
+		alert(message);
+	}
+</script>
 </head>
 <body>
 	<!-- header -->

@@ -1,37 +1,40 @@
 function addData() {
-  var selectedRadios = document.querySelectorAll('input[name="foodName"]:checked');
+	var selectedRadios = document.querySelectorAll('input[name="foodName"]:checked');
+	var id = document.getElementsByName("id")[0].value;
   if (selectedRadios.length > 0) {
     var foodNames = [];
     var kcals = [];
-    var carbs = [];
+    var carbss = [];
     var proteins = [];
     var fats = [];
-    
     selectedRadios.forEach(function(selectedRadio) {
       var parentRow = selectedRadio.closest('tr');
       var foodName = parentRow.querySelector('td:nth-child(2)').innerHTML.trim();
-      var kcal = parentRow.querySelector('td:nth-child(1)').innerHTML.trim();
-      var carb = parentRow.querySelector('td:nth-child(3)').innerHTML.trim();
-      var protein = parentRow.querySelector('td:nth-child(4)').innerHTML.trim();
-      var fat = parentRow.querySelector('td:nth-child(5)').innerHTML.trim();
+      var kcal = parentRow.querySelector('td:nth-child(3)').innerHTML.trim();
+      var carbs = parentRow.querySelector('td:nth-child(4)').innerHTML.trim();
+      var protein = parentRow.querySelector('td:nth-child(5)').innerHTML.trim();
+      var fat = parentRow.querySelector('td:nth-child(6)').innerHTML.trim();
       
       foodNames.push(foodName);
       kcals.push(kcal);
-      carbs.push(carb);
+      carbss.push(carbs);
       proteins.push(protein);
       fats.push(fat);
     });
     
-    // 선택한 데이터를 배열로 URL 매개변수로 전달하여 페이지 이동
-    var url = './dietInsertView?';
-    for (var i = 0; i < foodNames.length; i++) {
-      url += 'foodName=' + encodeURIComponent(foodNames[i]) +
-             '&kcal=' + encodeURIComponent(kcals[i]) +
-             '&carbs=' + encodeURIComponent(carbs[i]) +
-             '&protein=' + encodeURIComponent(proteins[i]) +
-             '&fat=' + encodeURIComponent(fats[i]) + '&';
-    }
-    window.location.href = url;
+  for (var i = 0; i < foodNames.length; i++) {
+	  var url = './userFoodInsert?' +
+      'foodName=' + foodNames[i] +
+      '&kcal=' + kcals[i] +
+      '&carbs=' + carbss[i] +
+      '&protein=' + proteins[i] +
+      '&fat=' + fats[i] +
+      '&id=' + id;
+    	window.location.href = url;
+  }
+//  부모 창으로 데이터 전송 후 팝업 창 닫기
+    window.close(); // 팝업 창 닫기
+    window.opener.refreshParent();
   }
 }
 

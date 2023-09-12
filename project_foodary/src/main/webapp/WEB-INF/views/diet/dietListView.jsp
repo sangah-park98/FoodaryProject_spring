@@ -1,4 +1,3 @@
-
 <%@page import="com.foodary.foodary.FoodaryCalendar"%>
 <%@page import="com.foodary.vo.UserFoodList"%>
 <%@page import="com.foodary.vo.UserFoodVO"%>
@@ -7,6 +6,7 @@
 <%@page import="java.time.LocalTime"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="com.foodary.vo.DietVO"%>
+<%@page import="com.foodary.vo.UserRegisterVO"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.util.Date"%>
@@ -34,49 +34,41 @@
       <jsp:include page="./headerAfter.jsp"></jsp:include>
    </div>
    <div class="main" style="display: flex;">
-   
 <%
    request.setCharacterEncoding("UTF-8");
 %>
-<!-- =========================================== 달 력 ==================================================== -->   
-<%
-   request.setCharacterEncoding("UTF-8"); 
-   String dietWriteDate = request.getParameter("dietWriteDate");
-   
-   // dietWriteDate가 null이 아닌 경우에만 파싱 로직 수행
-   LocalDate date = null;
-   if (dietWriteDate != null) {
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-       date = LocalDate.parse(dietWriteDate, formatter);
-   }
-   
-   Calendar calendar = Calendar.getInstance();
-   int year = calendar.get(Calendar.YEAR);
-   int month = calendar.get(Calendar.MONTH) + 1;
-   int day = calendar.get(Calendar.DATE); 
-   
-   // date가 null인 경우에는 현재 날짜를 사용하도록 설정
-   if (date != null) {
-       year = date.getYear();
-       month = date.getMonthValue();
-       day = date.getDayOfMonth();
-   }
-   
-   try {
-      year = Integer.parseInt(request.getParameter("year"));
-      month = Integer.parseInt(request.getParameter("month"));
-      day = 1;
-      
-      if(month >= 13) {
-         year++;
-         month = 1;
-      } else if(month <= 0) {
-         year--;
-         month = 12;
-      }
-   } catch(NumberFormatException e) { }
-%>
-
+		<!-- =========================================== 달 력 ==================================================== -->   
+		   <%
+		   request.setCharacterEncoding("UTF-8"); 
+		   String dietWriteDate = request.getParameter("dietWriteDate");
+		   String id = request.getParameter("id");
+		   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		   LocalDate date = LocalDate.parse(dietWriteDate, formatter);
+		
+		   Calendar calendar = Calendar.getInstance();
+		   int year = calendar.get(Calendar.YEAR);
+		   int month = calendar.get(Calendar.MONTH) + 1;
+		   int day = calendar.get(Calendar.DATE); 
+		   
+		   year = date.getYear();
+		   month = date.getMonthValue();
+		   day = date.getDayOfMonth();
+		   
+		
+		   try {
+		      year = Integer.parseInt(request.getParameter("year"));
+		      month = Integer.parseInt(request.getParameter("month"));
+		      day = 1;
+		      
+		      if(month >= 13) {
+		         year++;
+		         month = 1;
+		      }else if(month <= 0) {
+		         year--;
+		         month = 12;
+		      }
+		   }catch(NumberFormatException e) { }
+		  %>
 		<div>
 		<table width="700" border="0" align="center" cellpadding="10" cellspacing="20" style="text-align: center;">
 		   <tr>
@@ -118,18 +110,18 @@
 		         switch(FoodaryCalendar.weekDay(year, month, i) % 7) {
 		            case 0:  // 일요일
 		               out.println("<td><a style='text-decoration: none; color: black; cursor: pointer;'" +
-		            		"href='dietListView?dietWriteDate=" + year + "-" + String.format("%02d", month) + "-" + String.format("%02d", i) 
-		                  + "'>" + i + "</a></td>");
+		            		"href='dietListView?dietWriteDate=" + year + "-" + 
+		               		String.format("%02d", month) + "-" + String.format("%02d", i) + "&id=" + id +"'>" + i + "</a></td>");
 		               break;
 		            case 6:  // 토요일
 		               out.println("<td><a style='text-decoration: none; color: black; cursor: pointer;'" +
-		            	"href='dietListView?dietWriteDate=" + year + "-" + String.format("%02d", month) + "-" + String.format("%02d", i) + "'>" +
-		                  + i + "</a></td>");
+		            	"href='dietListView?dietWriteDate=" + year + "-" +
+		               	String.format("%02d", month) + "-" + String.format("%02d", i) + "&id=" + id + "'>" + i + "</a></td>");
 		               break;
 		            default:  // 평일
 		               out.println("<td><a style='text-decoration: none; color: black; cursor: pointer;'" +
-		            	"href='dietListView?dietWriteDate=" + year + "-" + String.format("%02d", month) + "-" + String.format("%02d", i) + "'>" +
-		                  + i + "</a></td>");
+		            	"href='dietListView?dietWriteDate=" + year + "-" + 
+		               	String.format("%02d", month) + "-" + String.format("%02d", i) + "&id=" + id + "'>" + i + "</a></td>");
 		               break;
 		         } 
 		      //   출력한 날짜(i)가 토요일이고 그 달의 마지막 날짜가 아니면 줄을 바꾼다.
@@ -149,7 +141,7 @@
 		   <!-- 년, 월을 선택된 년도와 달의 달력으로 한번에 넘어가게 한다. -->
 		   <tr>
 		      <td id="choice" colspan="7" >
-		   <form action="?dietWriteDate=<%=year%>-<%=String.format("%02d", month)%>-<%=String.format("%02d", day)%>" method="post" onsubmit="navigateToSelectedMonth(event)">
+		   <form action="?dietWriteDate=<%=year%>-<%=String.format("%02d", month)%>-<%=String.format("%02d", day)%>&id=${rvo.id}" method="post" onsubmit="navigateToSelectedMonth(event)">
 		         <select class="select" name="year" style="width:100px; height: 40px;">
 		<%
 		            for(int i=1900; i<=2100; i++) {
@@ -190,7 +182,7 @@
 				       <c:forEach var="dvo" items="${list}">
 				         <tr>
 				            <th>
-				            	<a href="dietView?dietWriteDate=${dvo.dietWriteDate}&dietWriteTime=${dvo.dietWriteTime}"
+				            	<a href="dietView?dietWriteDate=${dvo.dietWriteDate}&dietWriteTime=${dvo.dietWriteTime}&id=${rvo.id}"
 				            	style="text-decoration: none; color: black; cursor: pointer;">
 				            	<span style="background: #baffda; font-size: 25pt; font-weight: 900;">${dvo.dietWriteTime}</span> &nbsp;&nbsp;
 				            	</a>

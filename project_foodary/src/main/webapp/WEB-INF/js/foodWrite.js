@@ -1,30 +1,29 @@
-//function foodList() {
-//   //console.log('테스트');
-//    var userFoodDate = document.getElementById("userFoodDate").value;
-//    var userFoodTime = document.getElementById("userFoodTime").value;
-//    //console.log(date + time);
-//    var url = "./foodList.jsp?userFoodDate=" + userFoodDate + "&userFoodTime=" + userFoodTime;
-//    location.href = url;
-//}
+//	음식 데이터가 들어있는 팝업창 띄우기 
+function openPopup() {
+   url = 'foodList'
+   // 모니터의 가로 중앙 위치 계산
+   var left = (screen.width - 800) / 2; // 800은 팝업 창의 가로 크기
+   // 모니터의 세로 중앙 위치 계산
+   var top = (screen.height - 600) / 2; // 600은 팝업 창의 세로 크기
+   // 새 창을 열고 URL로 이동하며 위치를 중앙으로 설정
+   window.open(url, '_blank', 'width=1200,height=600,left=' + left + ',top=' + top);
+}
 
-//function openPopup() {
-//	var url= "foodList";    //팝업창 페이지 URL
-//	var winWidth = 700;
-//    var winHeight = 600;
-//    var popupOption= "width="+winWidth+", height="+winHeight;
-//	window.open(url,"음식검색",popupOption);
-//}
+function refreshParent() {
+    // 부모 창 새로고침
+    window.location.reload();
+}
 
-//인덱스 활용 음식 저장 형태 완료 
+// 띄워진 팝업창에서 내가 선택한 음식을 인덱스를 활용해서 저장하기
 function foodPlus(index) {
-   // console.log(index);
     var userFoodName = document.getElementsByName("dietFoodName")[index].value;
     var kcal = document.getElementsByName("dietKcal")[index].value;
     var carbs = document.getElementsByName("dietCarbs")[index].value;
     var protein = document.getElementsByName("dietProtein")[index].value;
     var fat = document.getElementsByName("dietFat")[index].value;
     var id = document.getElementsByName("id")[index].value;
-   var url = './userFoodInsert' +
+    // 팝업창에서 가져오기를 누르면 바로 저장하기 위해서 ./userFoodInsert 컨트롤러로 보낸다.
+    var url = './userFoodInsert' +
         '?foodName=' + encodeURIComponent(userFoodName) +
         '&kcal=' + encodeURIComponent(kcal) +
         '&carbs=' + encodeURIComponent(carbs) +
@@ -34,8 +33,11 @@ function foodPlus(index) {
     location.href = url;
 }
 
+function photoView(event) {
+	   $('#output').attr('src', URL.createObjectURL(event.target.files[0]));
+}
 
-//idx활용, index활용 수정 완료!! 
+// idx활용, index활용 수정 완료!! 
 function updateUserFood(idx , index) {
    var userFoodName = $('#userFoodName_' + index).val().trim();
    var userKcal = $('#userKcal_' + index).val().trim();
@@ -54,7 +56,6 @@ function updateUserFood(idx , index) {
 }
 
  function showNutrient() {
-	 
    var kcalElements = document.getElementsByClassName("kcals");
    var carbsElements = document.getElementsByClassName("carbs");
    var proteinElements = document.getElementsByClassName("proteins");
@@ -78,8 +79,6 @@ function updateUserFood(idx , index) {
      userFats.push(fatValue);
 }
 
-   console.log(userCarbs);    // ["50", "60", "70"]
-     
    var kcalSum = 0;
    var carbsSum  = 0;
    var proteinSum  = 0;
@@ -92,8 +91,6 @@ function updateUserFood(idx , index) {
      fatSum += Number(userFats[i]);
    }
    
-   // alert("mainCalculator");
-   // alert(currentWeight)
    let currentWeight = parseInt($('#currentWeight').val().trim());
    let goalWeight = parseInt($('#goalWeight').val().trim());
    let gender = $('input[name=gender]').val();

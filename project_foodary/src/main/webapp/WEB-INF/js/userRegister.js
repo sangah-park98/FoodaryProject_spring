@@ -1,16 +1,15 @@
 function idCheckFunction() {
 	let id = $('#id').val();
-	// console.log(id);
 	
 	$.ajax({
 		type: 'POST',
-		url: '../idCheck',
+		url: '../UserRegisterCheck',
 		data: {
-			id: id
+			"id": id // "id" json 객체
 		},
+		dataType: "text", // dataType 지정
 		success: function (res) {
 			console.log(res);
-			
 			switch (res) {
 				case '2':
 					$('#messageType').html('에러 메시지');
@@ -104,7 +103,7 @@ function userRegister() {
 					$('#errorMessage').html('비밀번호가 일치하지 않습니다.');
 					$('#messageCheck').attr('class', 'modal-content panel-warning');
 					break;
-				case '3':
+				case '0':
 					$('#messageType').html('성공 메시지');
 					$('#messageContent').html('회원가입에 성공했습니다.');
 					$('#messageCheck').attr('class', 'modal-content panel-success');
@@ -129,7 +128,6 @@ function userRegisterInfo() {
 		type: 'POST', 
 		url: '../UserRegister', 
 		data: form, 
-		
 		// ajax 요청이 성공하면 실행할 콜백 함수
 		success: function (res) {
 			 console.log("요청 성공: ", res);
@@ -158,7 +156,7 @@ function userRegisterInfo() {
 					$('#errorMessage').html('비밀번호가 일치하지 않습니다.');
 					$('#messageCheck').attr('class', 'modal-content panel-warning');
 					break;
-				case '3':
+				case '0':
 					$('#messageType').html('성공 메시지');
 					$('#messageContent').html('회원가입에 성공했습니다.');
 					$('#messageCheck').attr('class', 'modal-content panel-success');
