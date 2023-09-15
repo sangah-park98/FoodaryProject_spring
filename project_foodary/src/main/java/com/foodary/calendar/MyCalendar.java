@@ -2,12 +2,11 @@ package com.foodary.calendar;
 
 import java.util.Calendar;
 
-// 달력 작업 필요한 메소드를 모아놓은 클래스
+// 달력 작업에 필요한 메소드를 모아놓은 클래스
 public class MyCalendar {
 
 //	년도를 인수로 넘겨받아 윤년, 평년을 판단해 윤년이면 true, 평년이면 false를 리턴하는 메소드
 	public static boolean isLeapYear(int year) {
-		
 		return year % 4 == 0 && year % 100 != 0 || year % 400  == 0;
 	}
 	
@@ -15,7 +14,7 @@ public class MyCalendar {
 	public static int lastDay(int year, int month) {
 		int[] m = {31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 		m[1] = isLeapYear(year) ? 29 : 28;
-		return m[month - 1]; 
+		return m[month - 1];
 	}
 	
 //	년, 월, 일을 인수로 넘겨받아 1년 1월 1일 부터 지난 날짜를 계산해 리턴하는 메소드
@@ -32,10 +31,4 @@ public class MyCalendar {
 	public static int weekDay(int year, int month, int day) {
 		return totalDay(year, month, day) % 7;
 	}
-	
 }
-
-
-
-
-

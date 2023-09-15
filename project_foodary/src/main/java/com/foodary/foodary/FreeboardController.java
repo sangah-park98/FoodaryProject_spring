@@ -103,11 +103,12 @@ public class FreeboardController {
 		   freeboardList.setList(mapper.freeboardSelectList(hmap));
 		   
 		   ArrayList<FreeboardVO> notice = mapper.freeboardSelectNotice();
+		   
 		   String messages = "";
-		   for (FreeboardVO vo : notice) {
+		   for (FreeboardVO vo : notice) { // 공지글의 댓글 가져오기
 			   vo.setCommentCount(mapper.commentCount(vo.getIdx()));
 		   }
-		   for (FreeboardVO vo : freeboardList.getList()) {
+		   for (FreeboardVO vo : freeboardList.getList()) { // 자유게시판의 댓글 가져오기
 			   vo.setCommentCount(mapper.commentCount(vo.getIdx()));
 		   }
 		   try {
@@ -129,7 +130,6 @@ public class FreeboardController {
 		   model.addAttribute("notice", notice);
 		   model.addAttribute("freeboardList", freeboardList);
 		   model.addAttribute("currentPage", currentPage);
-		   
 		   return "freeboard/listView";
 	   }
 	   

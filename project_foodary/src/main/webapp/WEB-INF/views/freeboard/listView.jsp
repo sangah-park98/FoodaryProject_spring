@@ -15,9 +15,10 @@
 ${result}
 <div class="container">
 	<div class="header">
-	   <jsp:include page="./headerAfter.jsp"></jsp:include>
+	   <jsp:include page="./headerAfter.jsp"/>
 	</div>
 	<div class="main">
+		<!-- 1 -->
 		<table style="width: 1000px; margin-left: auto; margin-right: auto;" cellpadding="5" cellspacing="8">
 			<tr>
 				<th colspan="5" style="text-align: center;">
@@ -39,11 +40,11 @@ ${result}
 			<tr></tr>
 		</table>
 		<hr style="width: 1000px; margin-left: 200px; margin-bottom: 5px;">
+		<!-- 2 -->
 		<table style="width: 1000px; margin-left: auto; margin-right: auto;" cellpadding="5" cellspacing="8">
 		<tr></tr>
 			<!-- 오늘 날짜를 기억하는 Date 클래스 객체를 useBean으로 만든다. -->
 			<jsp:useBean id="date" class="java.util.Date"/>
-			
 			<!-- 공지글을 출력한다. -->
 			<c:if test="${currentPage == 1}">
 			<c:forEach var="vo" items="${notice}">
@@ -77,7 +78,6 @@ ${result}
 			</tr>
 			</c:forEach>
 			</c:if>
-			
 			<!-- 메인글을 출력한다. -->
 			<!-- list.jsp에서 request 영역에 저장한 freeboardList에서 1페이지 분량의 글을 꺼내온다. -->
 			<c:set var="list" value="${freeboardList.list}"/>

@@ -25,8 +25,14 @@
 <head>
 <meta charset="UTF-8">
 <title>식단 목록</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../css/threeGrid.css"/>
+<script type="text/javascript">
+    var message = "${msg}";
+    if (message) {
+        alert(message);
+    }
+</script>
 </head>
 <body>
 <div class="container">
@@ -172,11 +178,11 @@
 		   </tr>
 		</table>
 	</div>
+	
 	<div style="margin-left: 100px;">
 		   <div class="diet-table">
 		   <br>
 		      <span style="background: #fafcd9; font-size: 27pt; font-weight: 900;">${dietWriteDate} 식단 목록</span><br/><br/>
-		      
 			    <table width="400" border="0" align="center">
 			      <c:set var="list" value="${dietList.list}"/>
 				       <c:forEach var="dvo" items="${list}">
@@ -191,7 +197,7 @@
 					        <td>
 	 					       <c:forEach var="uvo" items="${list}" varStatus="status">
 	 					       <c:if test="${dvo.gup == uvo.gup}">
-					                  <span style="font-size: 25pt;">${uvo.foodName}</span> &nbsp
+					              <span style="font-size: 25pt;">${uvo.foodName}</span> &nbsp;
 					          </c:if>
 						      </c:forEach>
 				            </td>

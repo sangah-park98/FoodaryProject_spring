@@ -139,7 +139,13 @@
                      </button>&nbsp;&nbsp;&nbsp;
                      <button type="reset" style="background: none; border: 0; cursor: pointer;">
                      <span style="background: #fafcd9; font-size: 25pt; font-weight: 800;">다시쓰기</span>
-                  </button>
+                  </button>&nbsp;&nbsp;&nbsp;
+                  <button
+					type="button" 
+					style="border: 0; background: none; cursor: pointer;"
+					onclick="history.back()">
+					<span style="background: #fafcd9; font-size: 25pt; font-weight: 800;">돌아가기</span>&nbsp;&nbsp;&nbsp;
+				  </button>
                   </td>
                </tr>
             </table>

@@ -7,29 +7,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>푸드어리 보기</title>
+<title>캘린더에서 내가 선택한 날짜의 음식 목록 보기</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/threeGrid.css"/>
 </head>
 <body>
 <div class="container">
    <div class="header">
-      <jsp:include page="./headerAfter.jsp"></jsp:include>
+      <jsp:include page="./headerAfter.jsp"/>
    </div>
 	<div class="main" align="center" style="text-align: center;">
-<%
+<%-- <%
    request.setCharacterEncoding("UTF-8");
-%>
-   		<span style="background: #fafcd9; font-size: 35pt; font-weight: 900;">${dvo.dietWriteDate} 푸드어리</span>
+%> --%>
+<form action="dietUpdateView" method="post">
+   	<span style="background: #fafcd9; font-size: 35pt; font-weight: 900;">${dvo.dietWriteDate} 푸드어리</span>
 		<div class="diet">
-			<form action="dietUpdate" method="post">
+		  <tr>
+		         <td align="center" colspan="12" class="text-center">
+		             <input type="hidden" id="dietWriteDate" name="dietWriteTime" value="${dvo.dietWriteTime}" />
+		           	 <input	type="hidden" id="dietWriteDate" name="dietWriteDate" value="${dvo.dietWriteDate}"  />
+		             <input	type="hidden" id="id" name="id" value="${dvo.id}"  />
+		             <input	type="hidden" id="idx" name="idx" value="${dvo.idx}"  />
+		             <input	type="hidden" id="gup" name="gup" value="${dvo.gup}"  />
+		         </td>
+		      </tr>
+			<!-- 1 -->
 			<c:set var="list" value="${userFoodList.list}"/>
 			<table width="1500" align="center" border="0" cellpadding="10" cellspacing="10">
-			   <!-- 1 -->
-			   <tr>
-
-			   </tr>
-			   <!-- 2 -->
+			   <tr></tr>
 			   <c:forEach var="uvo" items="${list}">
 			   <tr>
 			      <th><span style="background: lavender; font-size: 25pt;">음식 이름</span> :&nbsp; 
@@ -49,7 +55,7 @@
 			      </th>
 			   </tr>
 			   </c:forEach>
-			   <!-- 3 -->
+			   <!-- 2 -->
 			   <tr>
 			      <th colspan="1"><span style="background: lavender; font-size: 30pt;">메모</span></th>
 			      <th colspan="4">
@@ -61,6 +67,7 @@
 			            >${dvo.dietMemo}</textarea>
 			      </th>
 			   </tr>
+			   <!-- 3 -->
 			   <tr>
 			   	<th colspan="5">
 			       	<c:if test="${not empty dvo.dietPicture}">
@@ -68,20 +75,18 @@
 					</c:if>
 				</th>
 				<tr>
-			   <!-- 5 -->
+			   <!-- 4 -->
 			   <tr>
 			      <th colspan="10">
 			         <button
 			            type="submit" 
-			            style="background: none; border: 0; cursor: pointer;"
-						onclick="location.href='dietListView?dietWriteDate=${dvo.dietWriteDate}'"				            
-			         >
+			            style="background: none; border: 0; cursor: pointer;">
 						<span style="background: #baffda; font-size: 25pt; font-weight: 900;">수정하기</span>
 			         </button>&nbsp;&nbsp;
 			         <button 
 			            type="button" 
 			             style="background: none; border: 0; cursor: pointer;"
-			            onclick="location.href='dietDelete?idx=${dvo.idx}'">
+			            onclick="location.href='dietDelete?idx=${dvo.idx}&id=${rvo.id}&dietWriteDate=${dvo.dietWriteDate}&gup=${dvo.gup}'">
 			            <span style="background: #baffda; font-size: 25pt; font-weight: 900;">삭제하기</span>
 			            </button>&nbsp;&nbsp;
 			         <button
@@ -97,7 +102,7 @@
 		</div>
 	</div>
    <div class="footer">
-      <jsp:include page="./footerAfter.jsp"></jsp:include>
+      <jsp:include page="./footerAfter.jsp"/>
    </div>
   </div>
 </body>

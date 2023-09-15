@@ -37,7 +37,7 @@ function photoView(event) {
 	   $('#output').attr('src', URL.createObjectURL(event.target.files[0]));
 }
 
-// idx활용, index활용 수정 완료!! 
+// 내가 먹은 음식 가져오면 수정하는 코드
 function updateUserFood(idx , index) {
    var userFoodName = $('#userFoodName_' + index).val().trim();
    var userKcal = $('#userKcal_' + index).val().trim();

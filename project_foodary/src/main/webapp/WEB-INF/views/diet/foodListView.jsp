@@ -171,7 +171,8 @@
 					 </td>
 				  </tr> 
 		          <tr style="height: 60px;">
-		          	 <input type="hidden" value="${rvo.id}" id="id" name="id"/> <!-- 같은 글그룹으로 묶기 위해 보내주는 히든 id -->
+		          	 <!-- id를 넣지 않으면 다른 user가 동일하게 고른 음식이 뜰 수 있기 때문 -->
+		          	 <input type="hidden" value="${rvo.id}" id="id" name="id"/>
 				   	 <td colspan="8" align="center">
 						<button type="button" onclick="addData()" style="background: none; border: 0; cursor: pointer;">
 							<span style="background: lavender; font-size: 30px; font-weight: 900;">가져오기</span>

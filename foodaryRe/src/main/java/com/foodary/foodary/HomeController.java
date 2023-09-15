@@ -30,11 +30,11 @@ public class HomeController {
 	
 	@Autowired
 	private SqlSession sqlSession;
-   // NaverLoginBO
-   @Autowired
-   public void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+    // NaverLoginBO
+    @Autowired
+    public void setNaverLoginBO(NaverLoginBO naverLoginBO) {
       this.naverLoginBO = naverLoginBO;
-   }
+    }
 	
 	@RequestMapping("/")
 	public String login(HttpServletRequest request, Model model, HttpSession session) {

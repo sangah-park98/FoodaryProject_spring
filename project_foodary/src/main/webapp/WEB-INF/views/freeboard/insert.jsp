@@ -22,7 +22,7 @@
 	<div class="main">
 	<br/><br/>
 		<form action="insertOK" method="post" enctype="multipart/form-data" onsubmit="return insertCheck()">
-			<table cellpadding="5" cellspacing="20" style="width: 700px; margin-left: auto; margin-right: auto; vertical-align: middle;">
+			<table cellpadding="5" cellspacing="20" style="width: 1050px; margin-left: auto; margin-right: auto; vertical-align: middle;">
 				<tr>
 					<th colspan="4" style="text-align: center;"><span style="background: #baffda; font-size: 45px;"><아무 말이나 끄적여 보세요></span></th>
 				</tr>
@@ -143,7 +143,7 @@
 						<!-- accept="image/* : 이미지의 모든 파일 형식을 허용한다. -->
 		        		<input type="file" accept="image/*" name="fileName" onchange="photoView(event)" value="파일 선택"
 		        			style="font-size: 10pt;"/>
-						<img id="output" style="max-width: 450px; max-height: 300px;"/><br/>
+						<img id="output" style="max-width: 450px; max-height: 300px;"/><br/> 
 					</td>
 				</tr>
 				<tr>
@@ -153,12 +153,12 @@
 							style="border: 0; background: none; cursor: pointer;">
 							<span style="background: #fafcd9; font-size: 25pt;; font-weight: 800;">저장하기</span></button>&nbsp;&nbsp;&nbsp;
 						<button
-							type="reset" 
+							type="reset"
 							style="border: 0; background: none; cursor: pointer;">
 							<span style="background: #fafcd9; font-size: 25pt;; font-weight: 800;">다시쓰기</span>
 						</button>&nbsp;&nbsp;&nbsp;
 						<button 
-							type="button" 
+							type="button"
 							style="border: 0; background: none; cursor: pointer;"
 							onclick="history.back()">
 							<span style="background: #fafcd9; font-size: 25pt;; font-weight: 800;">목록보기</span>
