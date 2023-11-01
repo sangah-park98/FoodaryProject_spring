@@ -1,10 +1,8 @@
 # :grapes:project_foodary_spring:green_apple:
-### 더조은 2차 프로젝트 by Spring
-## 마크다운 사용법(문법)
 
 ### Contents
 
-- [Headers](#headers)
+- [Index](#Index)
 - [글머리](#글머리)
 - [BlockQuote(인용구)](#BlockQuote)
 - [목록(List)](#목록)
@@ -18,7 +16,7 @@
 - [YouTube](#Youtube)
 
 
-## Headers
+## Index
 
 - 흔히 **제목을 적을 때 사용하는 문법** 이다.
 - 큰제목 : 문서 제목(ex. How to use Markdown)
