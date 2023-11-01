@@ -22,7 +22,13 @@
 <br/>
 
 ## Introduce
-
+![메인페이지](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/97c18665-1f9b-407d-98f8-d5df13d11d9a)
+![회원가입](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/b6a24701-e8d9-4751-9ed6-053967ef6b90)
+![마이페이지](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/49bd2021-6189-47a6-8ae0-a1270ade8224)
+![식단쓰기](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/713f2435-6931-45ed-800a-202bee0bf0ff)
+![식단 수정](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/c0fbf4fc-d5fc-48ba-88e0-f1b3d99e17b7)
+![식단목록 보기](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/b81bb879-0151-4b53-86c1-5ee0a0b666b1)
+![자유게시판](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/70eedc48-feea-43cf-833d-408336f2a398)
 
 <br/>
 
