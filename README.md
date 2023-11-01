@@ -1,12 +1,13 @@
 # :grapes:project_foodary_spring:green_apple:
 
-## Index
+## :pushpin:Index
 
 - :star:[About](#About)
 - :computer:[Introduce](#Introduce)
 - :rocket:[Skills](#Skills)
 - :movie_camera:[Youtube](#Youtube)
 - :pencil2:[Education](#Education)
+- :heavy_plus_sign:[Add](#Add)
 - :telephone_receiver:[Contact](#Contact)
 
 <br/>
@@ -47,13 +48,8 @@
 <br/>
 
 ## Youtube
-[시연 영상] https://youtu.be/P89qSZqFK5Q
+[전체 시연 영상] https://youtu.be/P89qSZqFK5Q
 
-<br/>
-
-따로 저장된 NaverLoginAPI DB 파일은 네이버로 로그인 하기 위해 필요한 기능들만 올린 파일이다.  
-DAO의 메소드는 자동 생성으로 넣어줘야 한다.  
-NaverLoginAPI: DB에 name, id, gender, email만 저장되는 코드  
 
 <br/>
 
@@ -63,6 +59,14 @@ NaverLoginAPI: DB에 name, id, gender, email만 저장되는 코드
 |2023.04 ~ 2023.11|빅데이터분석(with 파이썬)과 엘라스틱서치를 활용한 자바 웹개발자양성|
 |2021.08 ~ 2021.09|컴퓨터활용능력 1급|
 |2022.02 ~ 2022.03|청소년지도사 2급 자격연수|
+
+<br/>
+
+## Add
+#### 추가 기능 구현: Naver 로그인 API
+따로 저장된 NaverLoginAPI DB 파일은 네이버로 로그인 하기 위해 필요한 기능들만 올린 파일이다.  
+DAO의 메소드는 자동 생성으로 넣어줘야 한다.  
+NaverLoginAPI: DB에 name, id, gender, email만 저장되는 코드  
 
 <br/>
 
