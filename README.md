@@ -1,10 +1,10 @@
 # :grapes:project_foodary_spring:green_apple:
 
-### Contents
+### Index
 
-- [Index](#Index)
+- :bookmark_tabs:[개요](#개요)
 - [글머리](#글머리)
-- [BlockQuote(인용구)](#BlockQuote)
+- :rocket:[Skills](#Skills)
 - [목록(List)](#목록)
 - [코드(Code)](#코드)
 - [수평선](#수평선)
@@ -16,7 +16,7 @@
 - [YouTube](#Youtube)
 
 
-## Index
+## 개요
 
 - 흔히 **제목을 적을 때 사용하는 문법** 이다.
 - 큰제목 : 문서 제목(ex. How to use Markdown)
@@ -25,6 +25,12 @@
 
 <br/>
 
+## Skills
+
+- 흔히 **제목을 적을 때 사용하는 문법** 이다.
+- 큰제목 : 문서 제목(ex. How to use Markdown)
+- 작은제목 : 문서 부제목 (ex. 마크다운이란?, 마크다운 사용법(문법)등등)
+- 글머리 : 1 ~ 6까지만 지원을 한다. (HTML의 H1~H6와 비슷)
 ### 큰제목
 
 - 가장 큰 제목을 쓰는 경우 흔히 한 번만 사용한다.
@@ -44,7 +50,7 @@
 
 ---
 
-### 작은제목
+
 
 - 큰 제목 다음으로 분류를 할때 사용한다.
 
@@ -92,26 +98,4 @@ NaverLoginAPI: DB에 name, id, gender, email만 저장되는 코드
 ![js](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
 ![js](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### Contact
