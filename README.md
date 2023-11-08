@@ -12,7 +12,7 @@
   + [식단 수정 및 삭제](#식단-수정-및-삭제)
   + [식단 목록](#식단-목록)
 - 🛠 [사용한 기술](#사용한-기술)
-- :movie_camera: [시연 영상](#시연-영상)
+- 🎞 [시연 영상](#시연-영상)
 - :pencil2: [교육 수료](#교육-수료)
 - :heavy_plus_sign: [추가 기능 구현](#추가-기능-구현)
 - 💡 [느낀 점](#느낀-점)
@@ -90,7 +90,7 @@ DB: ![js](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mys
 
 <br/>
 
-## :movie_camera:시연 영상
+## 🎞시연 영상
 [보러가기] https://youtu.be/P89qSZqFK5Q
 
 
