@@ -1,29 +1,34 @@
 # :grapes:Project_PORTFOLIO:green_apple:
 
-## :pushpin:Index
+## Index
 
-- :star:[About](#About)
-- :computer:[Introduce](#Introduce)
-- :rocket:[Skills](#Skills)
-- :movie_camera:[Youtube](#Youtube)
-- :pencil2:[Education](#Education)
-- :heavy_plus_sign:[Add](#Add)
-- :telephone_receiver:[Contact](#Contact)
-- 💡[Think](#Think)
-
-<br/>
-
-
-## About
-- 프로젝트명: Foodary
-  +  사용자의 편의에 따라 자유롭게 식단을 수정 및 기록할 수 있는 식단 일기장
-- 분류: 팀 프로젝트
-- 제작 기간: 2023.06 ~ 08.
-- 주요 기능: 회원가입, 마이페이지, 자유게시판, 식단 쓰기 및 기록
+- :star: [소개](#소개)
+- :rocket: [기능 구현](#기능-구현)
+- 🛠 [사용한 기술](#사용한-기술)
+  + [회원가입](#회원가입)
+  + 마이페이지
+  + 자유게시판
+  + 식단 쓰기
+  + 식단 기록
+- :movie_camera: [시연 영상](#시연-영상)
+- :pencil2: [교육 수료](#교육-수료)
+- :heavy_plus_sign: [추가 기능 구현](#추가-기능-구현)
+- :telephone_receiver: [문의](#문의)
+- 💡 [느낀 점](#느낀-점)
 
 <br/>
 
-## Introduce
+
+## :star:소개
+> - 프로젝트명: Foodary
+>  +  사용자의 편의에 따라 자유롭게 식단을 수정 및 기록할 수 있는 식단 일기장
+> - 분류: 팀 프로젝트
+> - 제작 기간: 2023.06 ~ 08.
+> - 주요 기능: 회원가입, 마이페이지, 자유게시판, 식단 쓰기 및 기록
+
+<br/>
+
+## :rocket:기능 구현
 ### 1. 메인페이지
 ![메인페이지](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/97c18665-1f9b-407d-98f8-d5df13d11d9a)
 추가 설명 기입
@@ -48,26 +53,25 @@
 
 <br/>
 
-## Skills
-### 사용한 기술    
-![js](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+## 🛠사용한 기술    
+BackEnd: ![js](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![js](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)  
-![js](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+FrontEnd: ![js](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
 ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
 ![js](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
 ![js](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)  
-![js](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)  
+DB: ![js](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
 ![js](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white)
 
 <br/>
 
-## Youtube
-[전체 시연 영상] https://youtu.be/P89qSZqFK5Q
+## :movie_camera:시연 영상
+[보러가기] https://youtu.be/P89qSZqFK5Q
 
 
 <br/>
 
-## Education
+## :pencil2:교육 수료
 |기간|교육과정|
 |------|---|
 |2023.04 ~ 2023.11|빅데이터분석(with 파이썬)과 엘라스틱서치를 활용한 자바 웹개발자양성|
@@ -76,7 +80,7 @@
 
 <br/>
 
-## Add
+## :heavy_plus_sign:추가 기능 구현
 #### 추가 기능 구현: Naver 로그인 API
 따로 저장된 NaverLoginAPI DB 파일은 네이버로 로그인 하기 위해 필요한 기능들만 올린 파일이다.  
 DAO의 메소드는 자동 생성으로 넣어줘야 한다.  
@@ -84,7 +88,7 @@ NaverLoginAPI: DB에 name, id, gender, email만 저장되는 코드
 
 <br/>
 
-## Think
+## 💡느낀 점
 ### 배운 점  
 처음 진행한 팀 프로젝트로 Notion을 통해 서로 협업하며 각자 만든 부분들을 공유했습니다.  
 sqldeveloper을 통해 DB에 사용자가 입력한 정보에 대해 저장하고, Ajax를 사용하여 기존 사용자의 아이디와 중복이 될 경우 다른 아이디를 사용하게끔 구현하였습니다.  
@@ -97,7 +101,7 @@ sqldeveloper을 통해 DB에 사용자가 입력한 정보에 대해 저장하�
 
 <br/>
 
-## :telephone_receiver:Contact
+## :telephone_receiver:문의
 - Email: sangab018@gmail.com
 - phone: 010-5284-5147
 - Git: https://github.com/sangah-park98
