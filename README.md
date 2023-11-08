@@ -126,7 +126,7 @@ sqldeveloper을 통해 DB에 사용자가 입력한 정보에 대해 저장하�
 
 <br/>
 
-## :telephone_receiver: 문의
+## :telephone_receiver:문의
 - Email: sangab018@gmail.com
 - phone: 010-5284-5147
 - Git: https://github.com/sangah-park98
