@@ -14,7 +14,7 @@
 - 🛠 [사용한 기술](#사용한-기술)
 - 🎞 [시연 영상](#시연-영상)
 - :pencil2: [교육 수료](#교육-수료)
-- :heavy_plus_sign: [추가 기능 구현](#추가-기능-구현)
+- ➕ [추가 기능 구현](#추가-기능-구현)
 - 💡 [느낀 점](#느낀-점)
 - :telephone_receiver:[문의](#문의)
  
@@ -105,7 +105,7 @@ DB: ![js](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mys
 
 <br/>
 
-## :heavy_plus_sign:추가 기능 구현
+## ➕ 추가 기능 구현
 #### 추가 기능 구현: Naver 로그인 API
 따로 저장된 NaverLoginAPI DB 파일은 네이버로 로그인 하기 위해 필요한 기능들만 올린 파일이다.  
 DAO의 메소드는 자동 생성으로 넣어줘야 한다.  
