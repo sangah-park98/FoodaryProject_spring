@@ -32,7 +32,7 @@
 ### 1. 메인페이지
 ![메인페이지](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/97c18665-1f9b-407d-98f8-d5df13d11d9a)
 추가 설명 기입
-## 2. 회원가입
+## 회원가입
 ![회원가입](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/b6a24701-e8d9-4751-9ed6-053967ef6b90)
 추가 설명 기입
 ### 3. 마이페이지
