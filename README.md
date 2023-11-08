@@ -1,4 +1,4 @@
-# :grapes:Project_PORTFOLIO:green_apple:
+# :grapes:project_PORTFOLIO:green_apple:
 
 ## Index
 
