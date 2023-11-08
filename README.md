@@ -61,6 +61,7 @@
 ## 식단 수정 및 삭제
 ![식단 수정](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/c0fbf4fc-d5fc-48ba-88e0-f1b3d99e17b7)
 식단 수정 및 삭제는 음식 검색을 통해 나만의 식단 기록을 한 후 자유롭게 수정 및 삭제를 할 수 있습니다.  
+기존의 대중화 되어있는 식단 앱과 달리 직접 칼로리의 양과 탄단지의 수치를 변경할 수 있다는 차별점이 있습니다.  
 
 ## 식단 목록
 ![식단목록 보기](https://github.com/sangah-park98/project_foodary_spring/assets/133108195/b81bb879-0151-4b53-86c1-5ee0a0b666b1)
