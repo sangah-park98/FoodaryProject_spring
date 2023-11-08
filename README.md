@@ -161,4 +161,6 @@ sqldeveloper을 통해 DB에 사용자가 입력한 정보에 대해 저장하�
 - Email: sangab018@gmail.com
 - phone: 010-5284-5147
 - Git: https://github.com/sangah-park98
+- Notion: https://www.notion.so/Hi-I-m-sangah-Park-1b02b8146bbb46b4a68d4ff74db4ca71
+
 -------------
